@@ -12,14 +12,15 @@ interface ProviderGroup {
 }
 
 const PROVIDER_GROUPS: ProviderGroup[] = [
-  { label: "Hyperscalers", providers: ["AWS", "Google Cloud", "Microsoft Azure", "Oracle Cloud"] },
-  { label: "Specialized", providers: ["CoreWeave", "Lambda", "RunPod", "Paperspace", "FluidStack", "TensorDock", "Genesis Cloud", "Cudo Compute", "Scaleway", "OVHcloud", "Linode (Akamai)", "Vultr"] },
+  { label: "Hyperscalers", providers: ["AWS", "Google Cloud", "Microsoft Azure", "Oracle Cloud", "IBM Cloud"] },
+  { label: "Specialized", providers: ["CoreWeave", "Lambda", "RunPod", "Paperspace", "FluidStack", "TensorDock", "Genesis Cloud", "Cudo Compute", "Scaleway", "OVHcloud", "Linode (Akamai)", "Vultr", "Crusoe Energy", "Nebius"] },
   { label: "Decentralized", providers: ["Vast.ai", "Salad", "Akash Network"] },
 ];
 
 const COMPLIANCE_OPTIONS = ["SOC 2 Type II", "HIPAA", "GDPR", "ISO 27001"];
 const INFRA_OPTIONS = ["Tier 3/4 Data Center", "Standard Data Center", "Community / Peer-to-Peer"];
 const SLA_OPTIONS = ["99.99%", "99.9%", "Best Effort"];
+const REGION_OPTIONS = ["North America", "Europe", "Asia Pacific", "Global"];
 
 export function FilterSidebar() {
   const router = useRouter();
@@ -31,9 +32,12 @@ export function FilterSidebar() {
   const [selectedProviders, setSelectedProviders] = useState<string[]>(
     searchParams.get('providers') ? searchParams.get('providers')!.split(',') : []
   );
+  
+  const rawContinent = searchParams.get('continent') || searchParams.get('region') || '';
   const [selectedContinents, setSelectedContinents] = useState<string[]>(
-    searchParams.get('continent') ? searchParams.get('continent')!.split(',') : []
+    rawContinent ? rawContinent.split(',').filter(Boolean) : []
   );
+  
   const [selectedCompliance, setSelectedCompliance] = useState<string[]>(
     searchParams.get('compliance') ? searchParams.get('compliance')!.split(',') : []
   );
@@ -51,7 +55,10 @@ export function FilterSidebar() {
     setSpotEnabled(searchParams.get('spot') === 'true');
     setMaxPrice(searchParams.get('max_price') || "50");
     setSelectedProviders(searchParams.get('providers') ? searchParams.get('providers')!.split(',') : []);
-    setSelectedContinents(searchParams.get('continent') ? searchParams.get('continent')!.split(',') : []);
+    
+    const curContinent = searchParams.get('continent') || searchParams.get('region') || '';
+    setSelectedContinents(curContinent ? curContinent.split(',').filter(Boolean) : []);
+    
     setSelectedCompliance(searchParams.get('compliance') ? searchParams.get('compliance')!.split(',') : []);
     setSelectedInfra(searchParams.get('infra') ? searchParams.get('infra')!.split(',') : []);
     setSelectedSla(searchParams.get('sla') ? searchParams.get('sla')!.split(',') : []);
@@ -59,8 +66,14 @@ export function FilterSidebar() {
 
   const updateFilters = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (value !== null) params.set(key, value);
-    else params.delete(key);
+    if (key === 'continent') {
+      params.delete('region'); // clean up legacy region param
+    }
+    if (value !== null && value !== '') {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
     router.push(`?${params.toString()}`, { scroll: false });
   };
 
@@ -69,30 +82,32 @@ export function FilterSidebar() {
     setSpotEnabled(v);
     updateFilters('spot', v ? 'true' : null);
   };
+
   const handlePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMaxPrice(e.target.value);
     updateFilters('max_price', e.target.value === "50" ? null : e.target.value);
   };
+
   const toggleProvider = (p: string) => {
     const np = selectedProviders.includes(p) ? selectedProviders.filter(x => x !== p) : [...selectedProviders, p];
     setSelectedProviders(np);
     updateFilters('providers', np.length > 0 ? np.join(',') : null);
   };
+
   const toggleGroup = (l: string) => setExpandedGroups(p => ({ ...p, [l]: !p[l] }));
+  
   const toggleAllInGroup = (g: ProviderGroup) => {
     const all = g.providers.every(p => selectedProviders.includes(p));
     const np = all ? selectedProviders.filter(p => !g.providers.includes(p)) : [...selectedProviders, ...g.providers.filter(p => !selectedProviders.includes(p))];
     setSelectedProviders(np);
     updateFilters('providers', np.length > 0 ? np.join(',') : null);
   };
+
   const toggleArr = (item: string, cur: string[], setter: React.Dispatch<React.SetStateAction<string[]>>, key: string) => {
     const na = cur.includes(item) ? cur.filter(x => x !== item) : [...cur, item];
     setter(na);
     updateFilters(key, na.length > 0 ? na.join(',') : null);
   };
-
-  const checkboxClass = (active: boolean, color: string) =>
-    `w-3.5 h-3.5 rounded-sm flex items-center justify-center border transition-all flex-shrink-0 ${active ? `bg-${color}-500 border-${color}-500` : 'bg-[#111] border-[#333] group-hover:border-[#555]'}`;
 
   return (
     <aside className="w-56 flex-shrink-0 hidden lg:flex flex-col gap-4 text-xs overflow-y-auto max-h-[calc(100vh-7rem)] pr-2">
@@ -132,7 +147,7 @@ export function FilterSidebar() {
       <FilterSection 
         icon={<Building size={11} className="text-blue-400" />} 
         title={t('filter.region')} 
-        items={["North America", "Europe", "Asia Pacific", "Global"]} 
+        items={REGION_OPTIONS} 
         selected={selectedContinents}
         onToggle={(c) => toggleArr(c, selectedContinents, setSelectedContinents, 'continent')} 
         color="blue" 

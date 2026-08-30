@@ -17,6 +17,8 @@ const GPU_SUGGESTIONS: GpuSuggestion[] = [
   // NVIDIA H-series
   { model: "H100", label: "H100 80GB SXM", subtitle: "LLM Training · Top Tier", icon: "training" },
   { model: "H100", label: "H100 80GB PCIe", subtitle: "Fine-tuning · Inference", icon: "inference" },
+  { model: "H200", label: "H200 141GB", subtitle: "Massive LLM Inference", icon: "training" },
+  { model: "B200", label: "B200 192GB", subtitle: "Next-Gen Blackwell", icon: "training" },
   // NVIDIA A-series
   { model: "A100", label: "A100 80GB SXM", subtitle: "ML Training · Multi-node", icon: "training" },
   { model: "A100", label: "A100 80GB PCIe", subtitle: "Inference · Cost-efficient", icon: "inference" },
@@ -28,23 +30,19 @@ const GPU_SUGGESTIONS: GpuSuggestion[] = [
   // NVIDIA T-series
   { model: "T4", label: "T4 16GB", subtitle: "Inference · Lowest cost", icon: "inference" },
   // Consumer
-  { model: "RTX 4090", label: "RTX 4090 24GB", subtitle: "Inference · Consumer-grade", icon: "inference" },
-  { model: "RTX 6000 Ada", label: "RTX 6000 Ada 48GB", subtitle: "Professional · CAD/Render", icon: "general" },
-  { model: "RTX A6000", label: "RTX A6000 48GB", subtitle: "Workstation · Versatile", icon: "general" },
-  { model: "RTX 3090", label: "RTX 3090 24GB", subtitle: "Budget Training · Consumer", icon: "training" },
-  { model: "RTX 3080", label: "RTX 3080 10GB", subtitle: "Entry-level · Spot", icon: "general" },
-  // AMD
-  { model: "MI300X", label: "MI300X 192GB", subtitle: "AMD AI · Massive VRAM", icon: "training" },
-  { model: "MI250", label: "MI250 128GB", subtitle: "AMD HPC · Multi-die", icon: "training" },
-  // Google TPU
-  { model: "TPU v5e", label: "TPU v5e", subtitle: "Google AI · Efficient", icon: "training" },
-  { model: "TPU v4", label: "TPU v4", subtitle: "Google AI · High-perf", icon: "training" },
+  { model: "RTX 4090", label: "RTX 4090 24GB", subtitle: "High ROI · Local LLM", icon: "inference" },
+  { model: "RTX 3090", label: "RTX 3090 24GB", subtitle: "Budget Inference", icon: "general" },
+  { model: "RTX 6000", label: "RTX 6000 Ada 48GB", subtitle: "Workstation · Enterprise", icon: "inference" },
+  { model: "RTX A6000", label: "RTX A6000 48GB", subtitle: "Rendering · Deep Learning", icon: "inference" },
+  // AMD & Google
+  { model: "MI300X", label: "MI300X 192GB", subtitle: "ROCm 6.0 · AMD Flagship", icon: "training" },
+  { model: "TPU v5e", label: "TPU v5e 16GB", subtitle: "Google JAX / PyTorch", icon: "training" },
 ];
 
 const ICON_MAP = {
-  inference: Zap,
-  training: Brain,
-  general: Cpu,
+  inference: Cpu,
+  training: Zap,
+  general: Brain,
 };
 
 function GpuCombobox({ value, onChange }: { value: string; onChange: (val: string) => void }) {
@@ -69,7 +67,6 @@ function GpuCombobox({ value, onChange }: { value: string; onChange: (val: strin
     s.subtitle.toLowerCase().includes(query.toLowerCase())
   );
 
-  // Deduplicate by model for display label
   const displayLabel = value === 'Any' ? t('search.allGpus') : value;
 
   return (
@@ -147,24 +144,63 @@ export function SearchBar() {
   const searchParams = useSearchParams();
 
   const [selectedGpu, setSelectedGpu] = useState(searchParams.get('model') || "Any");
-  const [quantity, setQuantity] = useState("8x");
+  const [quantity, setQuantity] = useState(searchParams.get('quantity') || "Any");
   const [vram, setVram] = useState(searchParams.get('min_vram') || "Any");
-  const [continent, setContinent] = useState(searchParams.get('continent') || "Any");
+  
+  const rawContinent = searchParams.get('continent') || searchParams.get('region') || "Any";
+  const [continent, setContinent] = useState(rawContinent);
 
   useEffect(() => {
     setSelectedGpu(searchParams.get('model') || "Any");
+    setQuantity(searchParams.get('quantity') || "Any");
     setVram(searchParams.get('min_vram') || "Any");
-    setContinent(searchParams.get('continent') || "Any");
+    setContinent(searchParams.get('continent') || searchParams.get('region') || "Any");
   }, [searchParams]);
+
+  const updateParam = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value && value !== "Any") {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
+  const handleGpuChange = (newGpu: string) => {
+    setSelectedGpu(newGpu);
+    updateParam('model', newGpu);
+  };
+
+  const handleQuantityChange = (newQty: string) => {
+    setQuantity(newQty);
+    updateParam('quantity', newQty);
+  };
+
+  const handleVramChange = (newVram: string) => {
+    setVram(newVram);
+    updateParam('min_vram', newVram);
+  };
+
+  const handleContinentChange = (newContinent: string) => {
+    setContinent(newContinent);
+    updateParam('continent', newContinent);
+  };
 
   const handleSearch = () => {
     const params = new URLSearchParams(searchParams.toString());
     if (selectedGpu && selectedGpu !== "Any") params.set('model', selectedGpu);
     else params.delete('model');
+    
+    if (quantity && quantity !== "Any") params.set('quantity', quantity);
+    else params.delete('quantity');
+
     if (vram && vram !== "Any") params.set('min_vram', vram);
     else params.delete('min_vram');
+
     if (continent && continent !== "Any") params.set('continent', continent);
     else params.delete('continent');
+
     router.push(`?${params.toString()}`, { scroll: false });
   };
 
@@ -176,24 +212,29 @@ export function SearchBar() {
 
         <span className="text-xs font-medium text-[#555] uppercase tracking-wider mr-1">{t('search.label')}</span>
 
-        <GpuCombobox value={selectedGpu} onChange={setSelectedGpu} />
+        <GpuCombobox value={selectedGpu} onChange={handleGpuChange} />
 
         <div className="relative">
-          <select value={quantity} onChange={(e) => setQuantity(e.target.value)} className={selectClass}>
+          <select value={quantity} onChange={(e) => handleQuantityChange(e.target.value)} className={selectClass}>
+            <option value="Any">All Counts</option>
             {["1x", "2x", "4x", "8x"].map(q => <option key={q} value={q}>{q}</option>)}
           </select>
           <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" size={12} />
         </div>
 
         <div className="relative">
-          <select value={vram} onChange={(e) => setVram(e.target.value)} className={selectClass}>
+          <select value={vram} onChange={(e) => handleVramChange(e.target.value)} className={selectClass}>
             {["Any", "16GB", "24GB", "40GB", "48GB", "80GB", "128GB"].map(v => <option key={v} value={v}>{v === "Any" ? t('search.anyVram') : `≥ ${v}`}</option>)}
           </select>
           <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" size={12} />
         </div>
 
         <div className="relative">
-          <select value={continent} onChange={(e) => setContinent(e.target.value)} className={selectClass}>
+          <select 
+            value={CONTINENT_OPTIONS.some(o => o.value === continent) ? continent : "Any"} 
+            onChange={(e) => handleContinentChange(e.target.value)} 
+            className={selectClass}
+          >
             {CONTINENT_OPTIONS.map(opt => (
               <option key={opt.value} value={opt.value}>{t(opt.label)}</option>
             ))}
