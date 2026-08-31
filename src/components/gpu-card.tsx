@@ -31,18 +31,18 @@ function MicroBadge({ text }: { text: string }) {
   const isCert = lower.includes('soc') || lower.includes('hipaa') || lower.includes('iso') || lower.includes('fedramp') || lower.includes('gdpr');
 
   if (isWarning) {
-    return <span className="text-[9px] font-semibold px-1 py-px bg-amber-500/10 text-amber-500 rounded-sm border border-amber-500/15 inline-flex items-center gap-0.5"><AlertTriangle size={8} />{text}</span>;
+    return <span className="text-[9px] font-medium px-2 py-0.5 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/15 inline-flex items-center gap-0.5"><AlertTriangle size={8} />{text}</span>;
   }
   if (isCert) {
-    return <span className="text-[9px] font-semibold px-1 py-px bg-emerald-500/8 text-emerald-500 rounded-sm border border-emerald-500/15 inline-flex items-center gap-0.5"><ShieldCheck size={8} />{text}</span>;
+    return <span className="text-[9px] font-medium px-2 py-0.5 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/15 inline-flex items-center gap-0.5"><ShieldCheck size={8} />{text}</span>;
   }
-  return <span className="text-[9px] font-semibold px-1 py-px bg-white/5 text-[#666] rounded-sm border border-white/8">{text}</span>;
+  return <span className="text-[9px] font-medium px-2 py-0.5 bg-white/5 text-[#666] rounded-full border border-white/8">{text}</span>;
 }
 
 function SlaCell({ sla }: { sla: string }) {
-  if (sla === '99.99%') return <span className="text-emerald-500 font-data text-xs">{sla}</span>;
-  if (sla === '99.9%') return <span className="text-sky-400 font-data text-xs">{sla}</span>;
-  return <span className="text-amber-500 font-data text-xs">None</span>;
+  if (sla === '99.99%') return <span className="text-[10px] font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-400 rounded-full font-data">99.99%</span>;
+  if (sla === '99.9%') return <span className="text-[10px] font-semibold px-2 py-0.5 bg-sky-500/10 text-sky-400 rounded-full font-data">99.9%</span>;
+  return <span className="text-[10px] font-semibold px-2 py-0.5 bg-amber-500/10 text-amber-500 rounded-full font-data">None</span>;
 }
 
 // ─── Auto-Scoring Badge ───
@@ -155,19 +155,19 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
   }, [affiliateUrl]);
 
   const rowBg = gpu.promoted
-    ? 'bg-amber-500/[0.03] hover:bg-amber-500/[0.06] border-l-2 border-l-amber-500/40'
-    : 'hover:bg-[#141414] border-l-2 border-l-transparent';
+    ? 'bg-amber-500/[0.03] hover:bg-[#1a1a1a] border-l-2 border-l-amber-500/40'
+    : 'hover:bg-[#1a1a1a] border-l-2 border-l-transparent hover:border-l-green-500';
 
   const priceClass = isBestPrice
-    ? 'price-best font-bold font-data text-sm'
-    : 'text-white font-bold font-data text-sm';
+    ? 'price-best font-bold font-data tabular-nums text-sm'
+    : 'text-white font-bold font-data tabular-nums text-sm';
 
   const displayPrice = showRealCost ? computeRealCost(gpu.price) : gpu.price;
 
   return (
     <>
       <tr
-        className={`border-b border-[#1a1a1a] text-sm transition-colors ${rowBg} group relative`}
+        className={`border-b border-[#1a1a1a] text-sm transition-all duration-200 ${rowBg} group relative`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -190,7 +190,7 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
         </td>
 
         {/* VRAM */}
-        <td className="py-2.5 px-3 whitespace-nowrap font-data text-[#888] text-xs">
+        <td className="py-2.5 px-3 whitespace-nowrap font-data tabular-nums text-[#888] text-xs">
           {gpu.vram}
         </td>
 
@@ -239,7 +239,7 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
             <ContingencyCell count={gpu.alternativeCount} gpuName={gpu.gpuName} />
             <button
               onClick={() => setModalOpen(true)}
-              className="bg-[#1a1a1a] hover:bg-green-600 text-[#888] hover:text-black border border-[#2a2a2a] hover:border-green-600 px-3 py-1 rounded text-xs font-semibold flex items-center gap-1 transition-all active:scale-[0.97]"
+              className="opacity-50 group-hover:opacity-100 bg-[#1a1a1a] group-hover:bg-green-600 text-[#555] group-hover:text-black border border-[#2a2a2a] group-hover:border-green-500 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.4)] px-3.5 py-1.5 rounded text-xs font-bold flex items-center gap-1.5 transition-all duration-300 active:scale-[0.97]"
             >
               {t('gpu.rent')} <ExternalLink size={10} />
             </button>
