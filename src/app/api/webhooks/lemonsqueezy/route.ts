@@ -35,8 +35,8 @@ export async function POST(req: Request) {
         await db.user.update({
           where: { email },
           data: {
-            lemon_squeezy_customer_id: customerId,
-            lemon_squeezy_sub_id: payload.data.id,
+            billing_customer_id: customerId,
+            billing_subscription_id: payload.data.id,
             subscription_status: status,
             subscription_tier: status === 'active' ? tier : 'free',
           },
