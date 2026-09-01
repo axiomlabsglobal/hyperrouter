@@ -15,7 +15,7 @@ export function SubscribeButton({ tier }: { tier: 'pro' | 'enterprise' }) {
       return;
     }
     
-    if (localStorage.getItem('hyperrouter_compliance_agreed') === 'true') {
+    if (localStorage.getItem('hyperrouter_compliance') === 'true') {
       handleSubscribe();
     } else {
       setIsModalOpen(true);

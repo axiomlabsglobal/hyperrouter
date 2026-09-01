@@ -96,6 +96,29 @@ export interface TranslationDict {
   "compliance.proceed": string;
   "compliance.cancel": string;
   "compliance.acknowledge": string;
+
+  // Footer
+  "footer.product": string;
+  "footer.gpuSearch": string;
+  "footer.pricing": string;
+  "footer.apiDocs": string;
+  "footer.docs": string;
+  "footer.resources": string;
+  "footer.gettingStarted": string;
+  "footer.apiReference": string;
+  "footer.status": string;
+  "footer.contactSales": string;
+  "footer.company": string;
+  "footer.about": string;
+  "footer.blog": string;
+  "footer.careers": string;
+  "footer.github": string;
+  "footer.legal": string;
+  "footer.aup": string;
+  "footer.ear": string;
+  "footer.aml": string;
+  "footer.privacyPolicy": string;
+  "footer.terms": string;
 }
 
 const en: TranslationDict = {
@@ -175,9 +198,31 @@ const en: TranslationDict = {
   "compliance.aupDesc": "I agree not to use resources for crypto mining, DDoS, hacking, or illegal AI training.",
   "compliance.amlTitle": "Aggregator Disclaimer (AML/Liability)",
   "compliance.amlDesc": "HyperRouter is a metasearch engine. The vendor holds liability for payment and infrastructure.",
-  "compliance.proceed": "Proceed",
+  "compliance.proceed": "Accept & Continue",
   "compliance.cancel": "Cancel",
   "compliance.acknowledge": "Acknowledge",
+
+  "footer.product": "Product",
+  "footer.gpuSearch": "GPU Meta-Search",
+  "footer.pricing": "Pricing",
+  "footer.apiDocs": "API Docs",
+  "footer.docs": "Documentation",
+  "footer.resources": "Resources",
+  "footer.gettingStarted": "Getting Started",
+  "footer.apiReference": "API Reference",
+  "footer.status": "Status",
+  "footer.contactSales": "Contact Sales",
+  "footer.company": "Company",
+  "footer.about": "About",
+  "footer.blog": "Blog",
+  "footer.careers": "Careers",
+  "footer.github": "GitHub",
+  "footer.legal": "Legal & Compliance",
+  "footer.aup": "Acceptable Use (AUP)",
+  "footer.ear": "Export Control (EAR)",
+  "footer.aml": "Terms of Aggregation",
+  "footer.privacyPolicy": "Privacy Policy",
+  "footer.terms": "Terms of Service",
 };
 
 const ko: TranslationDict = {
@@ -258,9 +303,31 @@ const ko: TranslationDict = {
   "compliance.aupDesc": "본 자원을 암호화폐 채굴, DDoS, 해킹 또는 불법 AI 모델 학습에 사용하지 않을 것에 동의합니다.",
   "compliance.amlTitle": "중개자 면책 조항 (AML/책임)",
   "compliance.amlDesc": "HyperRouter는 단순 중개 검색 엔진이며, 실제 결제 및 인프라 제공 책임은 해당 벤더사에게 있습니다.",
-  "compliance.proceed": "계속하기",
+  "compliance.proceed": "동의 및 계속",
   "compliance.cancel": "취소",
   "compliance.acknowledge": "확인",
+
+  "footer.product": "제품",
+  "footer.gpuSearch": "GPU 메타검색",
+  "footer.pricing": "요금",
+  "footer.apiDocs": "API 문서",
+  "footer.docs": "문서",
+  "footer.resources": "리소스",
+  "footer.gettingStarted": "시작하기",
+  "footer.apiReference": "API 참조",
+  "footer.status": "상태",
+  "footer.contactSales": "영업팀 문의",
+  "footer.company": "회사",
+  "footer.about": "소개",
+  "footer.blog": "블로그",
+  "footer.careers": "채용",
+  "footer.github": "GitHub",
+  "footer.legal": "법적 고지 및 규제",
+  "footer.aup": "적정 사용 정책 (AUP)",
+  "footer.ear": "수출 통제 (EAR)",
+  "footer.aml": "중개자 면책 (AML)",
+  "footer.privacyPolicy": "개인정보 처리방침",
+  "footer.terms": "서비스 이용약관",
 };
 
 const ja: TranslationDict = {
@@ -344,6 +411,28 @@ const ja: TranslationDict = {
   "compliance.proceed": "続行",
   "compliance.cancel": "キャンセル",
   "compliance.acknowledge": "確認",
+
+  "footer.product": "製品",
+  "footer.gpuSearch": "GPU メタ検索",
+  "footer.pricing": "料金",
+  "footer.apiDocs": "API ドキュメント",
+  "footer.docs": "ドキュメント",
+  "footer.resources": "リソース",
+  "footer.gettingStarted": "はじめに",
+  "footer.apiReference": "API リファレンス",
+  "footer.status": "ステータス",
+  "footer.contactSales": "営業へのお問い合わせ",
+  "footer.company": "会社",
+  "footer.about": "概要",
+  "footer.blog": "ブログ",
+  "footer.careers": "採用情報",
+  "footer.github": "GitHub",
+  "footer.legal": "法的情報",
+  "footer.aup": "利用規定 (AUP)",
+  "footer.ear": "輸出管理 (EAR)",
+  "footer.aml": "免責事項 (AML)",
+  "footer.privacyPolicy": "プライバシーポリシー",
+  "footer.terms": "利用規約",
 };
 
 const de: TranslationDict = {
@@ -357,6 +446,28 @@ const de: TranslationDict = {
   "compliance.proceed": "Fortfahren",
   "compliance.cancel": "Abbrechen",
   "compliance.acknowledge": "Bestätigen",
+
+  "footer.product": "Produkt",
+  "footer.gpuSearch": "GPU Meta-Suche",
+  "footer.pricing": "Preise",
+  "footer.apiDocs": "API Docs",
+  "footer.docs": "Dokumentation",
+  "footer.resources": "Ressourcen",
+  "footer.gettingStarted": "Erste Schritte",
+  "footer.apiReference": "API Referenz",
+  "footer.status": "Status",
+  "footer.contactSales": "Vertrieb kontaktieren",
+  "footer.company": "Unternehmen",
+  "footer.about": "Über uns",
+  "footer.blog": "Blog",
+  "footer.careers": "Karriere",
+  "footer.github": "GitHub",
+  "footer.legal": "Rechtliches",
+  "footer.aup": "Nutzungsbedingungen (AUP)",
+  "footer.ear": "Exportkontrolle (EAR)",
+  "footer.aml": "Haftungsausschluss (AML)",
+  "footer.privacyPolicy": "Datenschutz",
+  "footer.terms": "Nutzungsbedingungen",
 };
 
 const es: TranslationDict = {
@@ -370,6 +481,28 @@ const es: TranslationDict = {
   "compliance.proceed": "Continuar",
   "compliance.cancel": "Cancelar",
   "compliance.acknowledge": "Reconocer",
+
+  "footer.product": "Producto",
+  "footer.gpuSearch": "Meta-búsqueda GPU",
+  "footer.pricing": "Precios",
+  "footer.apiDocs": "API Docs",
+  "footer.docs": "Documentación",
+  "footer.resources": "Recursos",
+  "footer.gettingStarted": "Empezando",
+  "footer.apiReference": "Referencia API",
+  "footer.status": "Estado",
+  "footer.contactSales": "Contactar Ventas",
+  "footer.company": "Empresa",
+  "footer.about": "Acerca de",
+  "footer.blog": "Blog",
+  "footer.careers": "Empleos",
+  "footer.github": "GitHub",
+  "footer.legal": "Legal",
+  "footer.aup": "Uso Aceptable (AUP)",
+  "footer.ear": "Control de Exportación (EAR)",
+  "footer.aml": "Descargo (AML)",
+  "footer.privacyPolicy": "Privacidad",
+  "footer.terms": "Términos",
 };
 
 const fr: TranslationDict = {
@@ -383,6 +516,28 @@ const fr: TranslationDict = {
   "compliance.proceed": "Continuer",
   "compliance.cancel": "Annuler",
   "compliance.acknowledge": "Accepter",
+
+  "footer.product": "Produit",
+  "footer.gpuSearch": "Méta-recherche GPU",
+  "footer.pricing": "Tarification",
+  "footer.apiDocs": "API Docs",
+  "footer.docs": "Documentation",
+  "footer.resources": "Ressources",
+  "footer.gettingStarted": "Commencer",
+  "footer.apiReference": "Référence API",
+  "footer.status": "Statut",
+  "footer.contactSales": "Contacter les Ventes",
+  "footer.company": "Entreprise",
+  "footer.about": "À propos",
+  "footer.blog": "Blog",
+  "footer.careers": "Carrières",
+  "footer.github": "GitHub",
+  "footer.legal": "Légal",
+  "footer.aup": "Utilisation Acceptable (AUP)",
+  "footer.ear": "Contrôle des Exportations (EAR)",
+  "footer.aml": "Avis de Non-Responsabilité (AML)",
+  "footer.privacyPolicy": "Confidentialité",
+  "footer.terms": "Conditions",
 };
 
 export const translations: Record<Locale, TranslationDict> = { en, ko, ja, de, es, fr };

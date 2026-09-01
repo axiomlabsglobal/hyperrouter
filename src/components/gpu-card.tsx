@@ -150,7 +150,7 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
   };
 
   const handleRentClick = () => {
-    if (localStorage.getItem('hyperrouter_compliance_agreed') === 'true') {
+    if (localStorage.getItem('hyperrouter_compliance') === 'true') {
       setRedirectOpen(true);
     } else {
       setModalOpen(true);

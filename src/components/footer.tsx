@@ -3,51 +3,52 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '@/i18n/context';
-
-const FOOTER_COLS = [
-  {
-    title: "Product",
-    links: [
-      { href: "/", label: "GPU Meta-Search" },
-      { href: "/pricing", label: "Pricing" },
-      { href: "/api-docs", label: "API Docs" },
-      { href: "/docs", label: "Documentation" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { href: "/docs", label: "Getting Started" },
-      { href: "/api-docs", label: "API Reference" },
-      { href: "https://status.hyperrouter.com", label: "Status", ext: true },
-      { href: "mailto:sales@hyperrouter.com", label: "Contact Sales", ext: true },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { href: "/docs", label: "About" },
-      { href: "/docs", label: "Blog" },
-      { href: "/docs", label: "Careers" },
-      { href: "https://github.com/hyperrouter", label: "GitHub", ext: true },
-    ],
-  },
-  {
-    title: "Legal & Compliance",
-    links: [
-      { href: "#", label: "Acceptable Use (AUP)", modalType: "aup" },
-      { href: "#", label: "Export Control (EAR)", modalType: "export" },
-      { href: "#", label: "Terms of Aggregation", modalType: "aml" },
-      { href: "/privacy", label: "Privacy Policy" },
-    ],
-  },
-];
+import { ComplianceModal } from './compliance-modal';
 
 export function Footer() {
-  const [legalModalType, setLegalModalType] = useState<'aup' | 'export' | 'aml' | null>(null);
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
   const { t } = useI18n();
+
+  const FOOTER_COLS = [
+    {
+      title: t('footer.product'),
+      links: [
+        { href: "/", label: t('footer.gpuSearch') },
+        { href: "/pricing", label: t('footer.pricing') },
+        { href: "/api-docs", label: t('footer.apiDocs') },
+        { href: "/docs", label: t('footer.docs') },
+      ],
+    },
+    {
+      title: t('footer.resources'),
+      links: [
+        { href: "/docs", label: t('footer.gettingStarted') },
+        { href: "/api-docs", label: t('footer.apiReference') },
+        { href: "https://status.hyperrouter.com", label: t('footer.status'), ext: true },
+        { href: "mailto:sales@hyperrouter.com", label: t('footer.contactSales'), ext: true },
+      ],
+    },
+    {
+      title: t('footer.company'),
+      links: [
+        { href: "/about", label: t('footer.about') },
+        { href: "/blog", label: t('footer.blog') },
+        { href: "/careers", label: t('footer.careers') },
+        { href: "https://github.com/hyperrouter", label: t('footer.github'), ext: true },
+      ],
+    },
+    {
+      title: t('footer.legal'),
+      links: [
+        { href: "#", label: t('footer.aup'), isLegal: true },
+        { href: "#", label: t('footer.ear'), isLegal: true },
+        { href: "#", label: t('footer.aml'), isLegal: true },
+        { href: "/privacy", label: t('footer.privacyPolicy') },
+        { href: "/terms", label: t('footer.terms') },
+      ],
+    },
+  ];
 
   return (
     <footer className="border-t border-[#1a1a1a] bg-[#080808] mt-auto">
@@ -76,8 +77,8 @@ export function Footer() {
               <ul className="flex flex-col gap-2">
                 {col.links.map(link => (
                   <li key={link.label}>
-                    {'modalType' in link ? (
-                      <button onClick={() => setLegalModalType(link.modalType as 'aup'|'export'|'aml')} className="text-[12px] text-[#555] hover:text-white transition-colors text-left">
+                    {'isLegal' in link ? (
+                      <button onClick={() => setLegalModalOpen(true)} className="text-[12px] text-[#555] hover:text-white transition-colors text-left">
                         {link.label}
                       </button>
                     ) : 'ext' in link ? (
@@ -109,47 +110,12 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Legal Compliance Modal */}
-      <AnimatePresence>
-        {legalModalType && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm" 
-              onClick={() => setLegalModalType(null)} 
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ type: "spring", duration: 0.4, bounce: 0 }}
-              className="relative bg-[#16161a] border border-white/10 rounded-2xl shadow-2xl max-w-md w-full p-6 flex flex-col gap-4"
-            >
-              <h2 className="text-lg font-bold text-white mb-2">
-                {legalModalType === 'aup' && t('compliance.aupTitle')}
-                {legalModalType === 'export' && t('compliance.earTitle')}
-                {legalModalType === 'aml' && t('compliance.amlTitle')}
-              </h2>
-              <div className="h-px bg-white/5" />
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {legalModalType === 'aup' && t('compliance.aupDesc')}
-                {legalModalType === 'export' && t('compliance.earDesc')}
-                {legalModalType === 'aml' && t('compliance.amlDesc')}
-              </p>
-              <div className="mt-2 flex justify-end">
-                <button 
-                  onClick={() => setLegalModalType(null)}
-                  className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-semibold transition-colors"
-                >
-                  {t('compliance.acknowledge')}
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      <ComplianceModal 
+        isOpen={legalModalOpen} 
+        onClose={() => setLegalModalOpen(false)} 
+        onConfirm={() => setLegalModalOpen(false)}
+        providerName="" 
+      />
     </footer>
   );
 }
