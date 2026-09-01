@@ -149,6 +149,14 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
     setRedirectOpen(true);
   };
 
+  const handleRentClick = () => {
+    if (localStorage.getItem('hyperrouter_compliance_agreed') === 'true') {
+      setRedirectOpen(true);
+    } else {
+      setModalOpen(true);
+    }
+  };
+
   const handleRedirect = useCallback(() => {
     setRedirectOpen(false);
     window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
@@ -237,12 +245,19 @@ export function GPURow({ gpu, isBestPrice = false, showRealCost = false, badge =
         <td className="py-2.5 px-3 whitespace-nowrap text-right">
           <div className="flex items-center gap-1.5 justify-end">
             <ContingencyCell count={gpu.alternativeCount} gpuName={gpu.gpuName} />
-            <button
-              onClick={() => setModalOpen(true)}
-              className="opacity-50 group-hover:opacity-100 bg-[#1a1a1a] group-hover:bg-green-600 text-[#555] group-hover:text-black border border-[#2a2a2a] group-hover:border-green-500 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.4)] px-3.5 py-1.5 rounded text-xs font-bold flex items-center gap-1.5 transition-all duration-300 active:scale-[0.97]"
-            >
-              {t('gpu.rent')} <ExternalLink size={10} />
-            </button>
+            <div className="relative group/rent">
+              <button
+                onClick={handleRentClick}
+                className="opacity-50 group-hover:opacity-100 bg-[#1a1a1a] group-hover:bg-green-600 text-[#555] group-hover:text-black border border-[#2a2a2a] group-hover:border-green-500 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.4)] px-3.5 py-1.5 rounded text-xs font-bold flex items-center gap-1.5 transition-all duration-300 active:scale-[0.97]"
+              >
+                {t('gpu.rent')} <ExternalLink size={10} />
+              </button>
+              
+              {/* Tooltip to make it explicit it goes to external site */}
+              <div className="absolute bottom-full right-0 mb-2 w-max max-w-[200px] bg-black border border-[#2a2a2a] text-[#aaa] text-[10px] px-2.5 py-1.5 rounded shadow-xl opacity-0 group-hover/rent:opacity-100 transition-opacity pointer-events-none z-50 whitespace-normal text-left">
+                해당 클라우드 제공자({gpu.provider})의 사이트로 이동합니다.
+              </div>
+            </div>
           </div>
         </td>
 

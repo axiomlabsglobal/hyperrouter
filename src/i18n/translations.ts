@@ -5,7 +5,7 @@
 // Keys are used across all UI components via the useI18n() hook.
 // ---------------------------------------------------------------------------
 
-export type Locale = "en" | "ko" | "ja" | "zh" | "de";
+export type Locale = "en" | "ko" | "ja" | "de" | "es" | "fr";
 
 export interface TranslationDict {
   // Navbar
@@ -81,9 +81,21 @@ export interface TranslationDict {
   "error.description": string;
   "error.retry": string;
 
-  // Auth
+  // Auth & Compliance
   "auth.continueGoogle": string;
   "auth.terms": string;
+  "auth.signupDisclaimer": string;
+  "compliance.title": string;
+  "compliance.subtitle": string;
+  "compliance.earTitle": string;
+  "compliance.earDesc": string;
+  "compliance.aupTitle": string;
+  "compliance.aupDesc": string;
+  "compliance.amlTitle": string;
+  "compliance.amlDesc": string;
+  "compliance.proceed": string;
+  "compliance.cancel": string;
+  "compliance.acknowledge": string;
 }
 
 const en: TranslationDict = {
@@ -153,9 +165,23 @@ const en: TranslationDict = {
 
   "auth.continueGoogle": "Continue with Google",
   "auth.terms": "By continuing, you agree to our Terms of Service and Privacy Policy.",
+  "auth.signupDisclaimer": "By signing up, you automatically agree to EAR regulations and AUP.",
+
+  "compliance.title": "Compliance Gateway",
+  "compliance.subtitle": "Required before proceeding",
+  "compliance.earTitle": "US Export Control & Sanctions (EAR/OFAC)",
+  "compliance.earDesc": "I confirm that I am not located in a sanctioned country and will not use resources on behalf of sanctioned entities.",
+  "compliance.aupTitle": "Acceptable Use Policy (AUP)",
+  "compliance.aupDesc": "I agree not to use resources for crypto mining, DDoS, hacking, or illegal AI training.",
+  "compliance.amlTitle": "Aggregator Disclaimer (AML/Liability)",
+  "compliance.amlDesc": "HyperRouter is a metasearch engine. The vendor holds liability for payment and infrastructure.",
+  "compliance.proceed": "Proceed",
+  "compliance.cancel": "Cancel",
+  "compliance.acknowledge": "Acknowledge",
 };
 
 const ko: TranslationDict = {
+  ...en,
   "nav.instances": "인스턴스",
   "nav.pricing": "요금",
   "nav.api": "API",
@@ -222,9 +248,23 @@ const ko: TranslationDict = {
 
   "auth.continueGoogle": "Google로 계속하기",
   "auth.terms": "계속하면 서비스 약관 및 개인정보 처리방침에 동의하는 것입니다.",
+  "auth.signupDisclaimer": "가입 시 EAR 규제 및 AUP에 자동 동의하는 것으로 간주합니다.",
+
+  "compliance.title": "컴플라이언스 게이트웨이",
+  "compliance.subtitle": "계속하기 전에 동의가 필요합니다",
+  "compliance.earTitle": "미국 수출 통제 및 제재 (EAR/OFAC)",
+  "compliance.earDesc": "본인은 제재 대상 국가 소속이 아니며, 제재 대상 기업을 대신하여 인프라를 사용하지 않음을 확인합니다.",
+  "compliance.aupTitle": "적정 사용 정책 (AUP)",
+  "compliance.aupDesc": "본 자원을 암호화폐 채굴, DDoS, 해킹 또는 불법 AI 모델 학습에 사용하지 않을 것에 동의합니다.",
+  "compliance.amlTitle": "중개자 면책 조항 (AML/책임)",
+  "compliance.amlDesc": "HyperRouter는 단순 중개 검색 엔진이며, 실제 결제 및 인프라 제공 책임은 해당 벤더사에게 있습니다.",
+  "compliance.proceed": "계속하기",
+  "compliance.cancel": "취소",
+  "compliance.acknowledge": "확인",
 };
 
 const ja: TranslationDict = {
+  ...en,
   "nav.instances": "インスタンス",
   "nav.pricing": "料金",
   "nav.api": "API",
@@ -291,144 +331,58 @@ const ja: TranslationDict = {
 
   "auth.continueGoogle": "Googleで続行",
   "auth.terms": "続行すると利用規約およびプライバシーポリシーに同意したことになります。",
-};
+  "auth.signupDisclaimer": "登録により、EAR規制およびAUPに自動的に同意したとみなされます。",
 
-const zh: TranslationDict = {
-  "nav.instances": "实例",
-  "nav.pricing": "定价",
-  "nav.api": "API",
-  "nav.docs": "文档",
-  "nav.login": "登录",
-  "nav.signup": "注册",
-
-  "search.label": "搜索",
-  "search.placeholder": "搜索GPU...",
-  "search.allGpus": "所有GPU",
-  "search.anyVram": "全部VRAM",
-  "search.anyRegion": "全部区域",
-  "search.button": "搜索",
-  "search.stats": "19个供应商 · 40+实例已索引",
-  "search.noModels": "未找到型号。",
-
-  "filter.availability": "可用性",
-  "filter.includeSpot": "包含竞价",
-  "filter.maxPrice": "最高$/hr",
-  "filter.globalRegions": "全球区域",
-  "filter.region": "区域",
-  "filter.enterprise": "企业",
-  "filter.compliance": "合规",
-  "filter.infraTier": "基础设施",
-  "filter.sla": "SLA",
-  "filter.providers": "供应商",
-  "filter.all": "全部",
-
-  "region.northAmerica": "北美",
-  "region.europe": "欧洲",
-  "region.asiaPacific": "亚太",
-  "region.global": "全球",
-
-  "results.searching": "搜索中...",
-  "results.promoted": "推广",
-  "results.results": "条结果",
-  "results.priceAsc": "价格 ↑",
-  "results.priceDesc": "价格 ↓",
-  "results.noResults": "未找到实例",
-  "results.noResultsHint": "请调整过滤条件或搜索条件。",
-  "results.failed": "加载实例失败",
-  "results.failedHint": "请稍后再试或调整过滤条件。",
-
-  "col.provider": "供应商",
-  "col.gpu": "GPU",
-  "col.vram": "VRAM",
-  "col.region": "区域",
-  "col.type": "类型",
-  "col.sla": "SLA",
-  "col.compliance": "认证",
-  "col.price": "价格",
-
-  "gpu.rent": "租用",
-  "gpu.ad": "广告",
-  "gpu.similar": "相似",
-  "gpu.acrossRegions": "个实例位于其他区域。",
-
-  "alert.create": "创建可用性提醒",
-  "alert.title": "设置提醒",
-
-  "error.title": "出错了",
-  "error.description": "无法加载该区域的价格数据，请重试。",
-  "error.retry": "重试",
-
-  "auth.continueGoogle": "使用Google继续",
-  "auth.terms": "继续即表示您同意我们的服务条款和隐私政策。",
+  "compliance.title": "コンプライアンスゲートウェイ",
+  "compliance.subtitle": "続行する前に同意が必要です",
+  "compliance.earTitle": "米国輸出管理および制裁 (EAR/OFAC)",
+  "compliance.earDesc": "私は制裁対象国に所在しておらず、制裁対象企業のためにリソースを使用しないことを確認します。",
+  "compliance.aupTitle": "利用規定 (AUP)",
+  "compliance.aupDesc": "暗号通貨のマイニング、DDoS、ハッキング、または違法なAI学習にリソースを使用しないことに同意します。",
+  "compliance.amlTitle": "仲介者の免責事項 (AML/責任)",
+  "compliance.amlDesc": "HyperRouterは検索エンジンであり、決済およびインフラの責任はベンダーにあります。",
+  "compliance.proceed": "続行",
+  "compliance.cancel": "キャンセル",
+  "compliance.acknowledge": "確認",
 };
 
 const de: TranslationDict = {
+  ...en,
   "nav.instances": "Instanzen",
   "nav.pricing": "Preise",
-  "nav.api": "API",
-  "nav.docs": "Doku",
   "nav.login": "Anmelden",
   "nav.signup": "Registrieren",
-
-  "search.label": "Suche",
-  "search.placeholder": "GPU suchen...",
-  "search.allGpus": "Alle GPUs",
-  "search.anyVram": "Alle VRAM",
-  "search.anyRegion": "Alle Regionen",
-  "search.button": "Suchen",
-  "search.stats": "19 Anbieter · 40+ Instanzen indexiert",
-  "search.noModels": "Keine Modelle gefunden.",
-
-  "filter.availability": "Verfügbarkeit",
-  "filter.includeSpot": "Spot einbeziehen",
-  "filter.maxPrice": "Max $/Std",
-  "filter.globalRegions": "Globale Regionen",
-  "filter.region": "Region",
-  "filter.enterprise": "Enterprise",
-  "filter.compliance": "Compliance",
-  "filter.infraTier": "Infrastruktur",
-  "filter.sla": "SLA",
-  "filter.providers": "Anbieter",
-  "filter.all": "Alle",
-
-  "region.northAmerica": "Nordamerika",
-  "region.europe": "Europa",
-  "region.asiaPacific": "Asien-Pazifik",
-  "region.global": "Global",
-
-  "results.searching": "Suche läuft...",
-  "results.promoted": "Gesponsert",
-  "results.results": "Ergebnisse",
-  "results.priceAsc": "Preis ↑",
-  "results.priceDesc": "Preis ↓",
-  "results.noResults": "Keine Instanzen gefunden",
-  "results.noResultsHint": "Filter oder Suchkriterien anpassen.",
-  "results.failed": "Instanzen konnten nicht geladen werden",
-  "results.failedHint": "Versuchen Sie es später erneut.",
-
-  "col.provider": "Anbieter",
-  "col.gpu": "GPU",
-  "col.vram": "VRAM",
-  "col.region": "Region",
-  "col.type": "Typ",
-  "col.sla": "SLA",
-  "col.compliance": "Zertifizierung",
-  "col.price": "Preis",
-
-  "gpu.rent": "Mieten",
-  "gpu.ad": "Anzeige",
-  "gpu.similar": "ähnliche",
-  "gpu.acrossRegions": "Instanzen in anderen Regionen.",
-
-  "alert.create": "Verfügbarkeitsalarm erstellen",
-  "alert.title": "Alarm einstellen",
-
-  "error.title": "Etwas ist schiefgelaufen",
-  "error.description": "Preisdaten für diese Region konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
-  "error.retry": "Erneut versuchen",
-
-  "auth.continueGoogle": "Weiter mit Google",
-  "auth.terms": "Durch Fortfahren stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu.",
+  "auth.signupDisclaimer": "Mit der Anmeldung stimmen Sie automatisch den EAR-Vorschriften und der AUP zu.",
+  "compliance.title": "Compliance-Gateway",
+  "compliance.proceed": "Fortfahren",
+  "compliance.cancel": "Abbrechen",
+  "compliance.acknowledge": "Bestätigen",
 };
 
-export const translations: Record<Locale, TranslationDict> = { en, ko, ja, zh, de };
+const es: TranslationDict = {
+  ...en,
+  "nav.instances": "Instancias",
+  "nav.pricing": "Precios",
+  "nav.login": "Iniciar sesión",
+  "nav.signup": "Regístrate",
+  "auth.signupDisclaimer": "Al registrarse, acepta automáticamente las normativas EAR y AUP.",
+  "compliance.title": "Puerta de Cumplimiento",
+  "compliance.proceed": "Continuar",
+  "compliance.cancel": "Cancelar",
+  "compliance.acknowledge": "Reconocer",
+};
+
+const fr: TranslationDict = {
+  ...en,
+  "nav.instances": "Instances",
+  "nav.pricing": "Tarification",
+  "nav.login": "Connexion",
+  "nav.signup": "S'inscrire",
+  "auth.signupDisclaimer": "En vous inscrivant, vous acceptez automatiquement les réglementations EAR et AUP.",
+  "compliance.title": "Portail de Conformité",
+  "compliance.proceed": "Continuer",
+  "compliance.cancel": "Annuler",
+  "compliance.acknowledge": "Accepter",
+};
+
+export const translations: Record<Locale, TranslationDict> = { en, ko, ja, de, es, fr };

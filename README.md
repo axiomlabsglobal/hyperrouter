@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HyperRouter B2B SaaS
 
-## Getting Started
+## Environment Variables (.env.local)
 
-First, run the development server:
+To run this project in a production environment with full Auth, DB, and Billing functionality, you must configure the following environment variables in your `.env.local` file:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```env
+# 1. Database (Supabase / PostgreSQL)
+# The full connection string for Prisma.
+DATABASE_URL="postgresql://user:password@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# 2. NextAuth & App Settings
+# Generate a secret via: `openssl rand -base64 32`
+NEXTAUTH_SECRET="your_nextauth_secret"
+NEXTAUTH_URL="http://localhost:3000"
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+# 3. Authentication Providers (Google/GitHub)
+GOOGLE_CLIENT_ID="your_google_oauth_client_id"
+GOOGLE_CLIENT_SECRET="your_google_oauth_client_secret"
+GITHUB_CLIENT_ID="your_github_oauth_client_id"
+GITHUB_CLIENT_SECRET="your_github_oauth_client_secret"
+
+# 4. Billing (Lemon Squeezy)
+LEMON_SQUEEZY_API_KEY="your_lemon_squeezy_api_key"
+LEMON_SQUEEZY_STORE_ID="your_store_id"
+LEMON_SQUEEZY_WEBHOOK_SECRET="your_webhook_signing_secret"
+LEMON_SQUEEZY_PRO_VARIANT_ID="variant_id_for_pro_tier"
+LEMON_SQUEEZY_ENTERPRISE_VARIANT_ID="variant_id_for_enterprise_tier"
+
+# 5. Slack Integration (Optional for Alerting)
+SLACK_CLIENT_ID="your_slack_oauth_client_id"
+SLACK_CLIENT_SECRET="your_slack_oauth_client_secret"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*If the database or billing keys are missing during development, the application will automatically fallback to dummy endpoints to prevent crashes and allow UI testing.*

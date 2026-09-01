@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from '@/components/navbar';
+import { SubscribeButton } from '@/components/subscribe-button';
 
 export default function PricingPage() {
   return (
@@ -17,9 +18,7 @@ export default function PricingPage() {
             <li className="flex items-center gap-2">✓ Early Access to New Providers</li>
             <li className="flex items-center gap-2">✓ API Access (10k req/mo)</li>
           </ul>
-          <button className="w-full bg-white text-black font-semibold py-2 rounded-lg hover:bg-[#e0e0e0] transition-colors">
-            Subscribe Now
-          </button>
+          <SubscribeButton tier="pro" />
         </div>
       </main>
     </div>

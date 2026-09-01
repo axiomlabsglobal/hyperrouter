@@ -1,8 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '@/i18n/context';
 
 const FOOTER_COLS = [
   {
@@ -33,17 +35,20 @@ const FOOTER_COLS = [
     ],
   },
   {
-    title: "Legal",
+    title: "Legal & Compliance",
     links: [
+      { href: "#", label: "Acceptable Use (AUP)", modalType: "aup" },
+      { href: "#", label: "Export Control (EAR)", modalType: "export" },
+      { href: "#", label: "Terms of Aggregation", modalType: "aml" },
       { href: "/privacy", label: "Privacy Policy" },
-      { href: "/terms", label: "Terms of Service" },
-      { href: "/compliance", label: "Export Compliance" },
-      { href: "/privacy", label: "Cookie Settings" },
     ],
   },
 ];
 
 export function Footer() {
+  const [legalModalType, setLegalModalType] = useState<'aup' | 'export' | 'aml' | null>(null);
+  const { t } = useI18n();
+
   return (
     <footer className="border-t border-[#1a1a1a] bg-[#080808] mt-auto">
       <div className="max-w-[1600px] mx-auto px-4 py-10">
@@ -71,7 +76,11 @@ export function Footer() {
               <ul className="flex flex-col gap-2">
                 {col.links.map(link => (
                   <li key={link.label}>
-                    {'ext' in link ? (
+                    {'modalType' in link ? (
+                      <button onClick={() => setLegalModalType(link.modalType as 'aup'|'export'|'aml')} className="text-[12px] text-[#555] hover:text-white transition-colors text-left">
+                        {link.label}
+                      </button>
+                    ) : 'ext' in link ? (
                       <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-[12px] text-[#555] hover:text-white transition-colors">
                         {link.label}
                       </a>
@@ -95,13 +104,52 @@ export function Footer() {
         </div>
         <div className="mt-4 space-y-2 text-xs text-gray-500 leading-relaxed">
           <p>
-            All provider names, logos, and brands (e.g., AWS, GCP, Azure, RunPod) are property of their respective owners. HyperRouter is an independent GPU computing aggregation SaaS platform and is not affiliated with, endorsed by, or sponsored by any cloud provider.
-          </p>
-          <p>
-            Prices and availability are estimates provided for informational purposes only. HyperRouter does not provision compute resources and is not responsible for final billing, data loss, or service interruptions.
+            HyperRouter operates strictly as an independent search aggregator. We do not provision compute resources, process payments, or manage infrastructure. Users are solely responsible for complying with all applicable local and international laws, including U.S. Export Administration Regulations (EAR) and OFAC sanctions. By using this site, you acknowledge that all transactions and identity verifications (KYC/AML) are handled directly by the respective third-party cloud providers.
           </p>
         </div>
       </div>
+
+      {/* Legal Compliance Modal */}
+      <AnimatePresence>
+        {legalModalType && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm" 
+              onClick={() => setLegalModalType(null)} 
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+              className="relative bg-[#16161a] border border-white/10 rounded-2xl shadow-2xl max-w-md w-full p-6 flex flex-col gap-4"
+            >
+              <h2 className="text-lg font-bold text-white mb-2">
+                {legalModalType === 'aup' && t('compliance.aupTitle')}
+                {legalModalType === 'export' && t('compliance.earTitle')}
+                {legalModalType === 'aml' && t('compliance.amlTitle')}
+              </h2>
+              <div className="h-px bg-white/5" />
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {legalModalType === 'aup' && t('compliance.aupDesc')}
+                {legalModalType === 'export' && t('compliance.earDesc')}
+                {legalModalType === 'aml' && t('compliance.amlDesc')}
+              </p>
+              <div className="mt-2 flex justify-end">
+                <button 
+                  onClick={() => setLegalModalType(null)}
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-semibold transition-colors"
+                >
+                  {t('compliance.acknowledge')}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }

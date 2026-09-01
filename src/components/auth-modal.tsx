@@ -75,7 +75,8 @@ export function AuthModal({ isOpen, onClose, title = "Sign in to HyperRouter" }:
         {/* Footer */}
         <div className="px-6 py-4 bg-[#111] border-t border-[#1a1a1a] text-center">
           <p className="text-[11px] text-[#666]">
-            By continuing, you agree to our <Link href="/terms" onClick={onClose} className="underline hover:text-[#888]">Terms of Service</Link> and <Link href="/privacy" onClick={onClose} className="underline hover:text-[#888]">Privacy Notice</Link>.
+            By signing up, you automatically agree to EAR regulations and AUP. <br/>
+            <Link href="/terms" onClick={onClose} className="underline hover:text-[#888]">Terms of Service</Link> and <Link href="/privacy" onClick={onClose} className="underline hover:text-[#888]">Privacy Notice</Link>.
           </p>
         </div>
       </div>

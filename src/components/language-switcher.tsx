@@ -8,9 +8,10 @@ import type { Locale } from '@/i18n/translations';
 const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: 'en', label: 'English (US)', flag: '🇺🇸' },
   { code: 'ko', label: '한국어', flag: '🇰🇷' },
-  { code: 'zh', label: '简体中文', flag: '🇨🇳' },
   { code: 'ja', label: '日本語', flag: '🇯🇵' },
   { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
 ];
 
 export function LanguageSwitcher() {
