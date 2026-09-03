@@ -6,12 +6,12 @@ import { useI18n } from '@/i18n/context';
 import type { Locale } from '@/i18n/translations';
 
 const LANGUAGES: { code: Locale; label: string; flag: string; short: string }[] = [
-  { code: 'en', label: 'English', flag: '🇺🇸', short: 'EN' },
-  { code: 'ko', label: '한국어', flag: '🇰🇷', short: 'KR' },
-  { code: 'ja', label: '日本語', flag: '🇯🇵', short: 'JA' },
-  { code: 'de', label: 'Deutsch', flag: '🇩🇪', short: 'DE' },
-  { code: 'es', label: 'Español', flag: '🇪🇸', short: 'ES' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷', short: 'FR' },
+  { code: 'en', label: 'English', flag: 'us', short: 'EN' },
+  { code: 'ko', label: '한국어', flag: 'kr', short: 'KR' },
+  { code: 'ja', label: '日本語', flag: 'jp', short: 'JA' },
+  { code: 'de', label: 'Deutsch', flag: 'de', short: 'DE' },
+  { code: 'es', label: 'Español', flag: 'es', short: 'ES' },
+  { code: 'fr', label: 'Français', flag: 'fr', short: 'FR' },
 ];
 
 export function LanguageSwitcher() {
@@ -37,7 +37,7 @@ export function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-2 py-1.5 rounded bg-transparent hover:bg-[#1a1a1a] transition-colors border border-transparent hover:border-[#2a2a2a]"
       >
-        <span className="text-sm leading-none" aria-hidden="true">{selected.flag}</span>
+        <img src={`https://flagcdn.com/${selected.flag}.svg`} width="20" alt="" aria-hidden="true" className="object-contain" />
         <span className="text-xs font-semibold text-[#888]">{selected.label}</span>
         <ChevronDown size={12} className="text-[#555]" />
       </button>
@@ -51,7 +51,7 @@ export function LanguageSwitcher() {
                 onClick={() => { setLocale(lang.code); setIsOpen(false); }}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-medium transition-colors w-full text-left ${locale === lang.code ? 'bg-[#222] text-white' : 'text-[#888] hover:bg-[#1f1f1f] hover:text-white'}`}
               >
-                <span className="text-sm leading-none">{lang.flag}</span>
+                <img src={`https://flagcdn.com/${lang.flag}.svg`} width="20" alt="" aria-hidden="true" className="object-contain" />
                 <span>{lang.label}</span>
               </button>
             ))}
