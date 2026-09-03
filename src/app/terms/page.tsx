@@ -95,16 +95,16 @@ export default function TermsOfServicePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-slate-100 mt-12 mb-6 tracking-wide border-b border-slate-800 pb-3">12. Governing Law and Delaware Jurisdiction</h2>
+            <h2 className="text-2xl font-semibold text-slate-100 mt-12 mb-6 tracking-wide border-b border-slate-800 pb-3">12. Governing Law and Jurisdiction</h2>
             <p className="mb-4">
-              These Terms, and any dispute arising from them, shall be governed by and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law principles. The United Nations Convention on Contracts for the International Sale of Goods is explicitly excluded.
+              These Terms, and any dispute arising from them, shall be governed by and construed in accordance with the laws of the Republic of Korea (South Korea), without regard to its conflict of law principles. The United Nations Convention on Contracts for the International Sale of Goods is explicitly excluded.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold text-slate-100 mt-12 mb-6 tracking-wide border-b border-slate-800 pb-3">13. Binding Arbitration and Class Action Waiver</h2>
             <p className="mb-4">
-              Any controversy or claim arising out of or relating to these Terms shall be settled by binding confidential arbitration administered by the American Arbitration Association (AAA) in San Francisco, California. <strong>YOU WAIVE YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.</strong>
+              Any controversy or claim arising out of or relating to these Terms shall be settled by the exclusive jurisdiction of the competent courts in Seoul, Republic of Korea. <strong>YOU WAIVE YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.</strong>
             </p>
           </section>
 
@@ -122,7 +122,7 @@ export default function TermsOfServicePage() {
             </p>
             <ul className="list-none space-y-2 text-slate-400">
               <li><strong>Email:</strong> legal@hyperrouter.com</li>
-              <li><strong>Address:</strong> HyperRouter Legal Dept., 3000 Sand Hill Road, Menlo Park, CA 94025, USA</li>
+              <li><strong>Address:</strong> HyperRouter Legal Dept., Incheon, Republic of Korea</li>
             </ul>
           </section>
         </article>

@@ -136,7 +136,7 @@ export default function EARPage() {
             </p>
             <ul className="list-none space-y-2 text-slate-400">
               <li><strong>Email:</strong> compliance@hyperrouter.com</li>
-              <li><strong>Address:</strong> HyperRouter Legal Dept., 3000 Sand Hill Road, Menlo Park, CA 94025, USA</li>
+              <li><strong>Address:</strong> HyperRouter Legal Dept., Incheon, Republic of Korea</li>
             </ul>
           </section>
         </article>

@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold text-slate-100 mt-12 mb-6 tracking-wide border-b border-slate-800 pb-3">7. International Data Transfers (Cross-Border)</h2>
             <p className="mb-4">
-              HyperRouter is incorporated in the United States. Data submitted to our platform may be routed globally to optimize latency. Transfers of personal data originating from the European Economic Area (EEA), the UK, or Switzerland to non-adequate jurisdictions are safeguarded by the <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission, alongside supplementary technical measures including AES-256 encryption at rest and TLS 1.3 in transit.
+              HyperRouter is a startup incorporated in the Republic of Korea, providing services globally. Data submitted to our platform may be routed globally to optimize latency. Transfers of personal data originating from the European Economic Area (EEA), the UK, or Switzerland to non-adequate jurisdictions are safeguarded by the <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission, alongside supplementary technical measures including AES-256 encryption at rest and TLS 1.3 in transit.
             </p>
           </section>
 
@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc pl-6 space-y-3 text-slate-400 mb-6">
               <li><strong>Active Accounts:</strong> Retained for the lifetime of the active API subscription.</li>
               <li><strong>Telemetry & Logs:</strong> Application and network logs are rotated and purged after 90 days unless preserved for active security incident investigations.</li>
-              <li><strong>Financial Records:</strong> Invoices and billing metadata are retained for 7 years to comply with US IRS and international tax obligations.</li>
+              <li><strong>Financial Records:</strong> Invoices and billing metadata are retained for 7 years to comply with South Korean NTS (National Tax Service) and international tax obligations.</li>
             </ul>
           </section>
 
@@ -152,7 +152,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-none space-y-2 text-slate-400">
               <li><strong>Email:</strong> privacy@hyperrouter.com</li>
-              <li><strong>Address:</strong> HyperRouter Legal Dept., 3000 Sand Hill Road, Menlo Park, CA 94025, USA</li>
+              <li><strong>Address:</strong> HyperRouter Legal Dept., Incheon, Republic of Korea</li>
             </ul>
           </section>
         </article>
