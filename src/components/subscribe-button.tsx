@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { ComplianceModal } from './compliance-modal';
 
-export function SubscribeButton({ tier }: { tier: 'pro' | 'enterprise' }) {
+export function SubscribeButton({ tier }: { tier: 'starter' | 'pro' | 'enterprise' }) {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

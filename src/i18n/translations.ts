@@ -132,6 +132,18 @@ export interface TranslationDict {
   "footer.aml": string;
   "footer.privacyPolicy": string;
   "footer.terms": string;
+  "footer.slogan": string;
+  "footer.allSystemsNormal": string;
+  "footer.disclaimer": string;
+  "footer.copyright": string;
+  "pricing.title": string;
+  "pricing.subtitle": string;
+  "pricing.starter": string;
+  "pricing.starterDesc": string;
+  "pricing.pro": string;
+  "pricing.proDesc": string;
+  "pricing.enterprise": string;
+  "pricing.enterpriseDesc": string;
 }
 
 const en: TranslationDict = {
@@ -249,6 +261,18 @@ const en: TranslationDict = {
   "footer.aml": "Terms of Aggregation",
   "footer.privacyPolicy": "Privacy Policy",
   "footer.terms": "Terms of Service",
+  "footer.slogan": "Global GPU compute metasearch.\nCompare. Deploy. Save.",
+  "footer.allSystemsNormal": "All systems normal",
+  "footer.disclaimer": "HyperRouter operates strictly as an independent search aggregator. We do not provision compute resources, process payments, or manage infrastructure. Users are solely responsible for complying with all applicable local and international laws, including U.S. Export Administration Regulations (EAR) and OFAC sanctions. By using this site, you acknowledge that all transactions and identity verifications (KYC/AML) are handled directly by the respective third-party cloud providers.",
+  "footer.copyright": "© 2026 HyperRouter, Inc. All rights reserved.",
+  "pricing.title": "Simple, Transparent Pricing",
+  "pricing.subtitle": "HyperRouter is currently in public beta. All routing features are free to use.",
+  "pricing.starter": "Starter",
+  "pricing.starterDesc": "Personal. Inventory search, basic alerts (3).",
+  "pricing.pro": "Pro Team",
+  "pricing.proDesc": "Startup. Real-time Slack/Discord webhooks (20), team sharing.",
+  "pricing.enterprise": "Enterprise API",
+  "pricing.enterpriseDesc": "Enterprise. Unlimited real-time routing API, 30s tracking.",
 };
 
 const ko: TranslationDict = {
@@ -367,6 +391,18 @@ const ko: TranslationDict = {
   "footer.aml": "중개자 면책 (AML)",
   "footer.privacyPolicy": "개인정보 처리방침",
   "footer.terms": "서비스 이용약관",
+  "footer.slogan": "글로벌 GPU 클라우드 메타검색.\n비교. 배포. 절약.",
+  "footer.allSystemsNormal": "모든 시스템 정상 동작",
+  "footer.disclaimer": "HyperRouter는 독립적인 중개 검색 엔진입니다. 당사는 컴퓨팅 인프라를 직접 제공하거나 결제를 처리하지 않습니다. 사용자는 미국 수출 통제 규정(EAR/OFAC) 등 현지 및 국제 법률을 준수할 책임이 있으며, 모든 결제 및 신원 확인(KYC/AML)은 각 클라우드 벤더사에서 직접 처리합니다.",
+  "footer.copyright": "© 2026 HyperRouter, Inc. 모든 권리 보유.",
+  "pricing.title": "단순하고 투명한 요금제",
+  "pricing.subtitle": "HyperRouter는 현재 베타 테스트 중입니다. 모든 라우팅 기능은 무료로 제공됩니다.",
+  "pricing.starter": "스타터 (Starter)",
+  "pricing.starterDesc": "개인용. 인벤토리 검색, 기본 알림(3개).",
+  "pricing.pro": "프로 팀 (Pro Team)",
+  "pricing.proDesc": "스타트업용. 실시간 Slack/Discord 웹훅(20개), 팀 계정 공유.",
+  "pricing.enterprise": "엔터프라이즈 API (Enterprise)",
+  "pricing.enterpriseDesc": "기업용. 실시간 라우팅 API 무제한, 30초 단위 초밀착 추적.",
 };
 
 const ja: TranslationDict = {
@@ -483,6 +519,18 @@ const ja: TranslationDict = {
   "footer.aml": "免責事項 (AML)",
   "footer.privacyPolicy": "プライバシーポリシー",
   "footer.terms": "利用規約",
+  "footer.slogan": "グローバルGPUクラウドメタ検索\n比較。デプロイ。節約。",
+  "footer.allSystemsNormal": "全システム正常",
+  "footer.disclaimer": "HyperRouterは独立した検索アグリゲーターです。決済やインフラ提供は行いません。ユーザーは米国の輸出管理(EAR)および制裁(OFAC)を遵守する責任があります。決済および本人確認(KYC/AML)は各クラウドベンダーにより直接処理されます。",
+  "footer.copyright": "© 2026 HyperRouter, Inc. All rights reserved.",
+  "pricing.title": "シンプルで透明な料金体系",
+  "pricing.subtitle": "現在パブリックベータ中です。すべてのルーティング機能は無料でご利用いただけます。",
+  "pricing.starter": "スターター (Starter)",
+  "pricing.starterDesc": "個人向け。在庫検索、基本アラート (3)。",
+  "pricing.pro": "プロ チーム (Pro Team)",
+  "pricing.proDesc": "スタートアップ向け。リアルタイムWebhook (20)、チーム共有。",
+  "pricing.enterprise": "エンタープライズ API",
+  "pricing.enterpriseDesc": "企業向け。無制限API、30秒単位の超高速トラッキング。",
 };
 
 const de: TranslationDict = {
@@ -518,6 +566,18 @@ const de: TranslationDict = {
   "footer.aml": "Haftungsausschluss (AML)",
   "footer.privacyPolicy": "Datenschutz",
   "footer.terms": "Nutzungsbedingungen",
+  "footer.slogan": "Globale GPU Metasuche.\nVergleichen. Bereitstellen. Sparen.",
+  "footer.allSystemsNormal": "Alle Systeme normal",
+  "footer.disclaimer": "HyperRouter ist eine unabhängige Suchmaschine. Die Nutzer sind für die Einhaltung der EAR/OFAC-Bestimmungen verantwortlich. Zahlungen und KYC erfolgen direkt über die Cloud-Anbieter.",
+  "footer.copyright": "© 2026 HyperRouter, Inc. Alle Rechte vorbehalten.",
+  "pricing.title": "Einfache, transparente Preise",
+  "pricing.subtitle": "Derzeit in der öffentlichen Beta. Alle Routing-Funktionen sind kostenlos.",
+  "pricing.starter": "Starter",
+  "pricing.starterDesc": "Persönlich. Inventarsuche, Basis-Alarme (3).",
+  "pricing.pro": "Pro Team",
+  "pricing.proDesc": "Startup. Echtzeit-Webhooks (20), Team-Freigabe.",
+  "pricing.enterprise": "Enterprise API",
+  "pricing.enterpriseDesc": "Unternehmen. Unbegrenzte API, 30s-Tracking.",
 };
 
 const es: TranslationDict = {
@@ -553,6 +613,18 @@ const es: TranslationDict = {
   "footer.aml": "Descargo (AML)",
   "footer.privacyPolicy": "Privacidad",
   "footer.terms": "Términos",
+  "footer.slogan": "Metabúsqueda global de GPU.\nCompara. Despliega. Ahorra.",
+  "footer.allSystemsNormal": "Todos los sistemas normales",
+  "footer.disclaimer": "HyperRouter es un motor de búsqueda independiente. Los usuarios deben cumplir con EAR/OFAC. Los pagos y KYC son procesados directamente por los proveedores de la nube.",
+  "footer.copyright": "© 2026 HyperRouter, Inc. Todos los derechos reservados.",
+  "pricing.title": "Precios simples y transparentes",
+  "pricing.subtitle": "Actualmente en beta pública. Todas las funciones de enrutamiento son gratuitas.",
+  "pricing.starter": "Starter",
+  "pricing.starterDesc": "Personal. Búsqueda de inventario, alertas básicas (3).",
+  "pricing.pro": "Pro Team",
+  "pricing.proDesc": "Startup. Webhooks en tiempo real (20), compartir en equipo.",
+  "pricing.enterprise": "Enterprise API",
+  "pricing.enterpriseDesc": "Empresa. API ilimitada, seguimiento de 30s.",
 };
 
 const fr: TranslationDict = {
@@ -588,6 +660,18 @@ const fr: TranslationDict = {
   "footer.aml": "Avis de Non-Responsabilité (AML)",
   "footer.privacyPolicy": "Confidentialité",
   "footer.terms": "Conditions",
+  "footer.slogan": "Méta-recherche mondiale de GPU.\nComparez. Déployez. Économisez.",
+  "footer.allSystemsNormal": "Tous les systèmes sont normaux",
+  "footer.disclaimer": "HyperRouter est un moteur de recherche indépendant. Les utilisateurs doivent respecter EAR/OFAC. Les paiements et le KYC sont traités directement par les fournisseurs cloud.",
+  "footer.copyright": "© 2026 HyperRouter, Inc. Tous droits réservés.",
+  "pricing.title": "Tarification simple et transparente",
+  "pricing.subtitle": "Actuellement en version bêta publique. Toutes les fonctionnalités de routage sont gratuites.",
+  "pricing.starter": "Starter",
+  "pricing.starterDesc": "Personnel. Recherche d'inventaire, alertes de base (3).",
+  "pricing.pro": "Pro Team",
+  "pricing.proDesc": "Startup. Webhooks en temps réel (20), partage d'équipe.",
+  "pricing.enterprise": "Enterprise API",
+  "pricing.enterpriseDesc": "Entreprise. API illimitée, suivi 30s.",
 };
 
 export const translations: Record<Locale, TranslationDict> = { en, ko, ja, de, es, fr };

@@ -16,15 +16,15 @@ export function Footer() {
       links: [
         { href: "/", label: t('footer.gpuSearch') },
         { href: "/pricing", label: t('footer.pricing') },
-        { href: "/api-docs", label: t('footer.apiDocs') },
-        { href: "/docs", label: t('footer.docs') },
+        { href: "#", label: t('footer.apiDocs'), comingSoon: true },
+        { href: "#", label: t('footer.docs'), comingSoon: true },
       ],
     },
     {
       title: t('footer.resources'),
       links: [
-        { href: "/docs", label: t('footer.gettingStarted') },
-        { href: "/api-docs", label: t('footer.apiReference') },
+        { href: "#", label: t('footer.gettingStarted'), comingSoon: true },
+        { href: "#", label: t('footer.apiReference'), comingSoon: true },
         { href: "https://status.hyperrouter.com", label: t('footer.status'), ext: true },
         { href: "mailto:sales@hyperrouter.com", label: t('footer.contactSales'), ext: true },
       ],
@@ -32,9 +32,9 @@ export function Footer() {
     {
       title: t('footer.company'),
       links: [
-        { href: "/about", label: t('footer.about') },
-        { href: "/blog", label: t('footer.blog') },
-        { href: "/careers", label: t('footer.careers') },
+        { href: "#", label: t('footer.about'), comingSoon: true },
+        { href: "#", label: t('footer.blog'), comingSoon: true },
+        { href: "#", label: t('footer.careers'), comingSoon: true },
         { href: "https://github.com/hyperrouter", label: t('footer.github'), ext: true },
       ],
     },
@@ -60,13 +60,13 @@ export function Footer() {
             <Link href="/" className="inline-block mb-3">
               <Logo size={20} />
             </Link>
-            <p className="text-[11px] text-[#444] leading-relaxed mb-4">
-              Global GPU compute metasearch.<br />Compare. Deploy. Save.
+            <p className="text-[11px] text-[#444] leading-relaxed mb-4 whitespace-pre-line">
+              {t('footer.slogan')}
             </p>
             {/* Status Indicator */}
             <div className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-              <span className="text-[9px] text-[#444] font-data">All systems normal</span>
+              <span className="text-[9px] text-[#444] font-data">{t('footer.allSystemsNormal')}</span>
             </div>
           </div>
 
@@ -77,7 +77,14 @@ export function Footer() {
               <ul className="flex flex-col gap-2">
                 {col.links.map(link => (
                   <li key={link.label}>
-                    {'isLegal' in link ? (
+                    {'comingSoon' in link ? (
+                      <div className="relative group/nav cursor-not-allowed inline-block">
+                        <span className="text-[12px] text-[#555] transition-colors">{link.label}</span>
+                        <div className="absolute bottom-full left-0 mb-1 px-2 py-1 bg-[#222] text-[10px] text-white rounded opacity-0 group-hover/nav:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                          Coming Soon
+                        </div>
+                      </div>
+                    ) : 'isLegal' in link ? (
                       <button onClick={() => setLegalModalOpen(true)} className="text-[12px] text-[#555] hover:text-white transition-colors text-left">
                         {link.label}
                       </button>
@@ -100,12 +107,12 @@ export function Footer() {
         {/* Legal Bar */}
         <div className="mt-8 pt-5 border-t border-[#141414] flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[10px] text-[#333] font-data">
-            © {new Date().getFullYear()} HyperRouter, Inc. All rights reserved.
+            {t('footer.copyright')}
           </p>
         </div>
         <div className="mt-4 space-y-2 text-xs text-gray-500 leading-relaxed">
           <p>
-            HyperRouter operates strictly as an independent search aggregator. We do not provision compute resources, process payments, or manage infrastructure. Users are solely responsible for complying with all applicable local and international laws, including U.S. Export Administration Regulations (EAR) and OFAC sanctions. By using this site, you acknowledge that all transactions and identity verifications (KYC/AML) are handled directly by the respective third-party cloud providers.
+            {t('footer.disclaimer')}
           </p>
         </div>
       </div>

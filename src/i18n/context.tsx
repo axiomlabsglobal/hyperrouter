@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { useRouter } from 'next/navigation';
 import { type Locale, type TranslationDict, translations } from "./translations";
 
 interface I18nContextValue {
@@ -14,6 +15,8 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
+  const router = useRouter();
+
   useEffect(() => {
     const stored = localStorage.getItem("hyperrouter_lang") as Locale | null;
     if (stored && translations[stored]) {
@@ -24,7 +27,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
     localStorage.setItem("hyperrouter_lang", l);
-  }, []);
+    router.refresh(); // Crucial: Re-render Server Components
+  }, [router]);
 
   const t = useCallback(
     (key: keyof TranslationDict): string => {

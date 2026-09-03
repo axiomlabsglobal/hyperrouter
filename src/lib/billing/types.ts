@@ -1,7 +1,7 @@
 export interface ICheckoutRequest {
   userId: string;
   userEmail: string;
-  tier: 'pro' | 'enterprise';
+  tier: 'starter' | 'pro' | 'enterprise';
   successUrl: string;
   cancelUrl: string;
 }

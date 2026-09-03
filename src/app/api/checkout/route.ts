@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     const { tier } = await req.json();
 
-    if (!tier || !['pro', 'enterprise'].includes(tier)) {
+    if (!tier || !['starter', 'pro', 'enterprise'].includes(tier)) {
       return NextResponse.json({ error: 'Invalid tier requested' }, { status: 400 });
     }
 

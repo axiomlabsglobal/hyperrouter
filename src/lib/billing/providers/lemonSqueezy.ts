@@ -8,6 +8,8 @@ export class LemonSqueezyProvider implements IPaymentProvider {
     
     const variantId = req.tier === 'enterprise' 
       ? process.env.LEMON_SQUEEZY_ENTERPRISE_VARIANT_ID 
+      : req.tier === 'starter'
+      ? process.env.LEMON_SQUEEZY_STARTER_VARIANT_ID
       : process.env.LEMON_SQUEEZY_PRO_VARIANT_ID;
 
     if (!apiKey || !storeId || !variantId) {

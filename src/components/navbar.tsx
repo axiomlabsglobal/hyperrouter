@@ -18,8 +18,8 @@ export function Navbar() {
   const navLinks = [
     { href: '/', label: t('nav.instances') },
     { href: '/pricing', label: t('nav.pricing') },
-    { href: '/api-docs', label: t('nav.api') },
-    { href: '/docs', label: t('nav.docs') },
+    { href: '#', label: t('nav.api') },
+    { href: '#', label: t('nav.docs') },
   ];
 
   return (
@@ -33,7 +33,14 @@ export function Navbar() {
           <nav className="hidden md:flex items-center gap-6 text-xs font-medium">
             {navLinks.map(link => {
               const isActive = pathname === link.href;
-              return (
+              return link.href === '#' ? (
+                <div key={link.label} className="relative group/nav cursor-not-allowed">
+                  <span className="text-[#555] transition-colors">{link.label}</span>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-1 bg-[#222] text-[10px] text-white rounded opacity-0 group-hover/nav:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                    Coming Soon
+                  </div>
+                </div>
+              ) : (
                 <Link 
                   key={link.href} 
                   href={link.href}
