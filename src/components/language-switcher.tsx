@@ -37,13 +37,13 @@ export function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-2 py-1.5 rounded bg-transparent hover:bg-[#1a1a1a] transition-colors border border-transparent hover:border-[#2a2a2a]"
       >
-        <span className="text-sm" aria-hidden="true">{selected.flag}</span>
-        <span className="text-xs font-semibold text-[#888]">{selected.short}</span>
+        <span className="text-sm leading-none" aria-hidden="true">{selected.flag}</span>
+        <span className="text-xs font-semibold text-[#888]">{selected.label}</span>
         <ChevronDown size={12} className="text-[#555]" />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-40 bg-[#161616] border border-[#2a2a2a] rounded-lg shadow-xl overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-100">
+        <div className="absolute right-0 mt-1 w-32 bg-[#161616] border border-[#2a2a2a] rounded-lg shadow-xl overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-100">
           <div className="flex flex-col py-1">
             {LANGUAGES.map((lang) => (
               <button
@@ -51,8 +51,8 @@ export function LanguageSwitcher() {
                 onClick={() => { setLocale(lang.code); setIsOpen(false); }}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-medium transition-colors w-full text-left ${locale === lang.code ? 'bg-[#222] text-white' : 'text-[#888] hover:bg-[#1f1f1f] hover:text-white'}`}
               >
-                <span className="text-sm leading-none mr-1">{lang.flag} {lang.short}</span>
-                <span className="text-gray-400">({lang.label})</span>
+                <span className="text-sm leading-none">{lang.flag}</span>
+                <span>{lang.label}</span>
               </button>
             ))}
           </div>

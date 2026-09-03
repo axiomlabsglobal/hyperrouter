@@ -41,9 +41,9 @@ export function Footer() {
     {
       title: t('footer.legal'),
       links: [
-        { href: "#", label: t('footer.aup'), isLegal: true },
-        { href: "#", label: t('footer.ear'), isLegal: true },
-        { href: "#", label: t('footer.aml'), isLegal: true },
+        { href: "/legal/aup", label: t('footer.aup') },
+        { href: "/legal/ear", label: t('footer.ear') },
+        { href: "/legal/aml", label: t('footer.aml') },
         { href: "/privacy", label: t('footer.privacyPolicy') },
         { href: "/terms", label: t('footer.terms') },
       ],

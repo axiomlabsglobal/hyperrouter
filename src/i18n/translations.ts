@@ -144,6 +144,14 @@ export interface TranslationDict {
   "pricing.proDesc": string;
   "pricing.enterprise": string;
   "pricing.enterpriseDesc": string;
+  "alert.desc": string;
+  "legal.aup.title": string;
+  "legal.ear.title": string;
+  "legal.aml.title": string;
+  "legal.privacy.title": string;
+  "legal.terms.title": string;
+  "legal.contentPlaceholder": string;
+
 }
 
 const en: TranslationDict = {
@@ -273,6 +281,14 @@ const en: TranslationDict = {
   "pricing.proDesc": "Startup. Real-time Slack/Discord webhooks (20), team sharing.",
   "pricing.enterprise": "Enterprise API",
   "pricing.enterpriseDesc": "Enterprise. Unlimited real-time routing API, 30s tracking.",
+  "alert.desc": "Get notified when new instances are available.",
+  "legal.aup.title": "Acceptable Use Policy",
+  "legal.ear.title": "EAR / OFAC Compliance",
+  "legal.aml.title": "AML / KYC Policy",
+  "legal.privacy.title": "Privacy Policy",
+  "legal.terms.title": "Terms of Service",
+  "legal.contentPlaceholder": "This is a placeholder for the legal document content. HyperRouter operates strictly as an independent search aggregator. All terms apply as per local and international laws.",
+
 };
 
 const ko: TranslationDict = {
@@ -403,6 +419,14 @@ const ko: TranslationDict = {
   "pricing.proDesc": "스타트업용. 실시간 Slack/Discord 웹훅(20개), 팀 계정 공유.",
   "pricing.enterprise": "엔터프라이즈 API (Enterprise)",
   "pricing.enterpriseDesc": "기업용. 실시간 라우팅 API 무제한, 30초 단위 초밀착 추적.",
+  "alert.desc": "새 인스턴스가 등록되면 알림을 받습니다.",
+  "legal.aup.title": "허용 가능한 사용 정책 (AUP)",
+  "legal.ear.title": "EAR / OFAC 컴플라이언스",
+  "legal.aml.title": "AML / KYC 정책",
+  "legal.privacy.title": "개인정보 처리방침",
+  "legal.terms.title": "이용약관",
+  "legal.contentPlaceholder": "법적 문서의 임시 텍스트입니다. HyperRouter는 독립적인 중개 검색 엔진으로 운영되며, 관련 국내외 법률에 따라 모든 약관이 적용됩니다.",
+
 };
 
 const ja: TranslationDict = {
@@ -578,6 +602,14 @@ const de: TranslationDict = {
   "pricing.proDesc": "Startup. Echtzeit-Webhooks (20), Team-Freigabe.",
   "pricing.enterprise": "Enterprise API",
   "pricing.enterpriseDesc": "Unternehmen. Unbegrenzte API, 30s-Tracking.",
+  "alert.desc": "Lassen Sie sich benachrichtigen, wenn neue Instanzen verfügbar sind.",
+  "legal.aup.title": "Richtlinie zur akzeptablen Nutzung",
+  "legal.ear.title": "EAR / OFAC-Konformität",
+  "legal.aml.title": "AML / KYC-Richtlinie",
+  "legal.privacy.title": "Datenschutzrichtlinie",
+  "legal.terms.title": "Nutzungsbedingungen",
+  "legal.contentPlaceholder": "Platzhalter für das rechtliche Dokument. HyperRouter operiert als unabhängige Suchmaschine.",
+
 };
 
 const es: TranslationDict = {
@@ -625,6 +657,14 @@ const es: TranslationDict = {
   "pricing.proDesc": "Startup. Webhooks en tiempo real (20), compartir en equipo.",
   "pricing.enterprise": "Enterprise API",
   "pricing.enterpriseDesc": "Empresa. API ilimitada, seguimiento de 30s.",
+  "alert.desc": "Reciba notificaciones cuando haya nuevas instancias disponibles.",
+  "legal.aup.title": "Política de uso aceptable",
+  "legal.ear.title": "Cumplimiento de EAR / OFAC",
+  "legal.aml.title": "Política AML / KYC",
+  "legal.privacy.title": "Política de privacidad",
+  "legal.terms.title": "Términos de servicio",
+  "legal.contentPlaceholder": "Marcador de posición para el documento legal. HyperRouter opera como un motor de búsqueda independiente.",
+
 };
 
 const fr: TranslationDict = {
@@ -672,6 +712,14 @@ const fr: TranslationDict = {
   "pricing.proDesc": "Startup. Webhooks en temps réel (20), partage d'équipe.",
   "pricing.enterprise": "Enterprise API",
   "pricing.enterpriseDesc": "Entreprise. API illimitée, suivi 30s.",
+  "alert.desc": "Soyez averti lorsque de nouvelles instances sont disponibles.",
+  "legal.aup.title": "Politique d'utilisation acceptable",
+  "legal.ear.title": "Conformité EAR / OFAC",
+  "legal.aml.title": "Politique AML / KYC",
+  "legal.privacy.title": "Politique de confidentialité",
+  "legal.terms.title": "Conditions d'utilisation",
+  "legal.contentPlaceholder": "Espace réservé pour le document juridique. HyperRouter agit comme un moteur de recherche indépendant.",
+
 };
 
 export const translations: Record<Locale, TranslationDict> = { en, ko, ja, de, es, fr };

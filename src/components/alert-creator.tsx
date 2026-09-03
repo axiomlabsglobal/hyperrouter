@@ -2,19 +2,31 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Bell, X, Crown, Check, Sparkles } from 'lucide-react';
+import { useI18n } from '@/i18n/context';
+import { useSession, signIn } from 'next-auth/react';
 
 // ─── Alert Creator Button ───
 export function AlertCreatorButton() {
+  const { t } = useI18n();
+  const { data: session } = useSession();
   const [showAlert, setShowAlert] = useState(false);
+
+  const handleClick = () => {
+    if (!session) {
+      signIn('google');
+      return;
+    }
+    setShowAlert(true);
+  };
 
   return (
     <>
       <button
-        onClick={() => setShowAlert(true)}
+        onClick={handleClick}
         className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-400 hover:text-amber-300 hover:border-amber-500/40 font-semibold text-sm transition-all active:scale-[0.98]"
       >
         <Bell size={16} fill="currentColor" />
-        Create Availability Alert
+        {t('alert.create')}
       </button>
 
       <AlertCreatorModal isOpen={showAlert} onClose={() => setShowAlert(false)} />
