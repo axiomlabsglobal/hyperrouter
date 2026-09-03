@@ -1,7 +1,7 @@
-﻿import { ImageResponse } from 'next/og';
+import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'HyperRouter - Real-time Global GPU Price Index & Cloud Metasearch';
+export const alt = 'HyperRouter - Global GPU Pricing & Routing Aggregator';
 export const size = {
   width: 1200,
   height: 630,
@@ -79,10 +79,10 @@ export default async function Image() {
               letterSpacing: '-2px',
             }}
           >
-            Real-time Global GPU Price Index & Cloud Metasearch
+            HyperRouter - Find the Best GPU
           </div>
           <div style={{ fontSize: '24px', color: '#888888', lineHeight: 1.4 }}>
-            Instantly compare H100, A100, B200 spot & on-demand rates across Lambda, RunPod, PrimeIntellect, Nebius & AWS.
+            Global GPU Pricing & Routing Aggregator. Compare real-time spot & on-demand rates.
           </div>
         </div>
 

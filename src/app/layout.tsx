@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://hyperrouter.io'),
+  metadataBase: new URL('https://hyperrouter.netlify.app'),
   title: {
-    default: 'HyperRouter - Real-time Global GPU Price Index & Cloud Metasearch',
+    default: 'HyperRouter - Global GPU Pricing & Routing Aggregator',
     template: '%s | HyperRouter'
   },
-  description: 'Compare real-time GPU pricing and availability across 19+ cloud providers (Lambda, RunPod, PrimeIntellect, Nebius, AWS). Live spot & on-demand price index.',
+  description: 'Compare real-time GPU pricing and availability across 19+ cloud providers. Find the best GPU for your AI workloads.',
   keywords: [
     'GPU Cloud',
     'GPU Price Comparison',
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://hyperrouter.io',
+    url: 'https://hyperrouter.netlify.app',
     siteName: 'HyperRouter',
-    title: 'HyperRouter - Real-time Global GPU Price Index & Cloud Metasearch',
+    title: 'HyperRouter - Global GPU Pricing & Routing Aggregator',
     description: 'Real-time global GPU pricing, availability tracking, and automated Slack inventory alerts across 19+ cloud vendors.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HyperRouter - Real-time Global GPU Price Index & Cloud Metasearch',
-    description: 'Instant GPU price index & availability comparison across Lambda, RunPod, PrimeIntellect, Nebius, and AWS.',
+    title: 'HyperRouter - Global GPU Pricing & Routing Aggregator',
+    description: 'Instant GPU price index & availability comparison across top cloud providers.',
     creator: '@hyperrouter',
   },
   robots: {
