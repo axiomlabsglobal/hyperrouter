@@ -102,6 +102,12 @@ export function FilterSidebar({ filters, setFilters }: { filters: FilterState, s
         selected={filters.continent}
         onToggle={(c) => toggleArr('continent', c)} 
         color="blue" 
+        labelMap={{
+          "North America": t('region.northAmerica'),
+          "Europe": t('region.europe'),
+          "Asia Pacific": t('region.asiaPacific'),
+          "Global": t('region.global')
+        }}
       />
 
       {/* Divider: Enterprise */}
@@ -117,12 +123,17 @@ export function FilterSidebar({ filters, setFilters }: { filters: FilterState, s
 
       {/* Infra */}
       <FilterSection icon={<Building size={11} className="text-sky-400" />} title={t('filter.infraTier')} items={INFRA_OPTIONS} selected={filters.infra}
-        onToggle={(c) => toggleArr('infra', c)} color="sky" />
+        onToggle={(c) => toggleArr('infra', c)} color="sky"
+        labelMap={{
+          "Tier 3/4 Data Center": t('filter.tier34'),
+          "Standard Data Center": t('filter.standardDc'),
+          "Community / Peer-to-Peer": t('filter.community')
+        }} />
 
       {/* SLA */}
       <FilterSection icon={<Clock size={11} className="text-violet-400" />} title={t('filter.sla')} items={SLA_OPTIONS} selected={filters.sla}
         onToggle={(c) => toggleArr('sla', c)} color="violet"
-        labelMap={{ "Best Effort": "No SLA", "99.99%": "99.99% Uptime", "99.9%": "99.9% Uptime" }} />
+        labelMap={{ "Best Effort": t('filter.noSla'), "99.99%": t('filter.uptime9999'), "99.9%": t('filter.uptime999') }} />
 
       {/* Divider: Providers */}
       <div className="flex items-center gap-2">
@@ -136,12 +147,18 @@ export function FilterSidebar({ filters, setFilters }: { filters: FilterState, s
         const isExpanded = expandedGroups[group.label];
         const count = group.providers.filter(p => filters.providers.includes(p)).length;
         const allSel = count === group.providers.length;
+        
+        // Map hardcoded group labels to i18n
+        const groupLabelKey = group.label === 'Hyperscalers' ? t('filter.hyperscalers') :
+                              group.label === 'Specialized' ? t('filter.specialized') :
+                              group.label === 'Decentralized' ? t('filter.decentralized') : group.label;
+
         return (
           <div key={group.label} className="flex flex-col">
             <button onClick={() => toggleGroup(group.label)} className="flex items-center justify-between py-1 group cursor-pointer">
               <div className="flex items-center gap-1.5">
                 {isExpanded ? <ChevronDown size={11} className="text-[#555]" /> : <ChevronRight size={11} className="text-[#555]" />}
-                <span className="text-[#999] font-medium group-hover:text-white transition-colors">{group.label}</span>
+                <span className="text-[#999] font-medium group-hover:text-white transition-colors">{groupLabelKey}</span>
               </div>
               {count > 0 && <span className="text-[9px] font-bold text-green-500 bg-green-500/10 px-1 py-px rounded-sm">{count}</span>}
             </button>
@@ -151,7 +168,7 @@ export function FilterSidebar({ filters, setFilters }: { filters: FilterState, s
                   <div className={`w-3.5 h-3.5 rounded-sm flex items-center justify-center border transition-all ${allSel ? 'bg-green-600 border-green-600' : 'bg-[#111] border-[#333] group-hover:border-[#555]'}`}>
                     {allSel && <Check size={9} className="text-black" strokeWidth={3} />}
                   </div>
-                  <span className="text-[#666] italic">All</span>
+                  <span className="text-[#666] italic">{t('filter.all')}</span>
                 </label>
                 {group.providers.map(p => {
                   const active = filters.providers.includes(p);

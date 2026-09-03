@@ -20,4 +20,9 @@ export interface IPaymentProvider {
    * Verifies the incoming webhook signature from the payment provider.
    */
   verifyWebhookSignature(rawBody: string, signature: string, secret: string): boolean;
+
+  /**
+   * Generates a customer portal URL for managing subscription, invoices, and payment methods.
+   */
+  getCustomerPortalUrl(customerId: string): Promise<string>;
 }

@@ -23,6 +23,14 @@ export interface TranslationDict {
   "search.anyVram": string;
   "search.anyRegion": string;
   "search.button": string;
+  "search.liveInventory": string;
+  "search.allCounts": string;
+  "filter.tier34": string;
+  "filter.standardDc": string;
+  "filter.community": string;
+  "filter.noSla": string;
+  "filter.uptime9999": string;
+  "filter.uptime999": string;
   "search.stats": string;
   "search.noModels": string;
 
@@ -38,6 +46,9 @@ export interface TranslationDict {
   "filter.sla": string;
   "filter.providers": string;
   "filter.all": string;
+  "filter.hyperscalers": string;
+  "filter.specialized": string;
+  "filter.decentralized": string;
 
   // Region names
   "region.northAmerica": string;
@@ -55,6 +66,8 @@ export interface TranslationDict {
   "results.noResultsHint": string;
   "results.failed": string;
   "results.failedHint": string;
+  "results.showRealCost": string;
+  "results.realCostDesc": string;
 
   // Table Columns
   "col.provider": string;
@@ -135,6 +148,14 @@ const en: TranslationDict = {
   "search.anyVram": "Any VRAM",
   "search.anyRegion": "Any Region",
   "search.button": "Search",
+  "search.liveInventory": "Live Inventory",
+  "search.allCounts": "All Counts",
+  "filter.tier34": "Tier 3/4 Data Center",
+  "filter.standardDc": "Standard Data Center",
+  "filter.community": "Community / Peer-to-Peer",
+  "filter.noSla": "No SLA",
+  "filter.uptime9999": "99.99% Uptime",
+  "filter.uptime999": "99.9% Uptime",
   "search.stats": "19 providers · 40+ instances indexed",
   "search.noModels": "No models found.",
 
@@ -149,6 +170,9 @@ const en: TranslationDict = {
   "filter.sla": "SLA",
   "filter.providers": "Providers",
   "filter.all": "All",
+  "filter.hyperscalers": "Hyperscalers",
+  "filter.specialized": "Specialized",
+  "filter.decentralized": "Decentralized",
 
   "region.northAmerica": "North America",
   "region.europe": "Europe",
@@ -164,6 +188,8 @@ const en: TranslationDict = {
   "results.noResultsHint": "Adjust filters or search criteria.",
   "results.failed": "Failed to load instances",
   "results.failedHint": "Try again later or adjust your filters.",
+  "results.showRealCost": "Show Real Cost",
+  "results.realCostDesc": "Includes est. 1TB storage and network egress (~23%).",
 
   "col.provider": "Provider",
   "col.gpu": "GPU",
@@ -240,6 +266,14 @@ const ko: TranslationDict = {
   "search.anyVram": "전체 VRAM",
   "search.anyRegion": "전체 리전",
   "search.button": "검색",
+  "search.liveInventory": "실시간 재고",
+  "search.allCounts": "전체 개수",
+  "filter.tier34": "티어 3/4 데이터센터",
+  "filter.standardDc": "표준 데이터센터",
+  "filter.community": "커뮤니티 / P2P",
+  "filter.noSla": "SLA 없음",
+  "filter.uptime9999": "99.99% 가동률",
+  "filter.uptime999": "99.9% 가동률",
   "search.stats": "19개 공급사 · 40+ 인스턴스 인덱싱",
   "search.noModels": "모델을 찾을 수 없습니다.",
 
@@ -254,6 +288,9 @@ const ko: TranslationDict = {
   "filter.sla": "SLA",
   "filter.providers": "공급사",
   "filter.all": "전체",
+  "filter.hyperscalers": "하이퍼스케일러",
+  "filter.specialized": "전문 벤더사",
+  "filter.decentralized": "분산형 (커뮤니티)",
 
   "region.northAmerica": "북미",
   "region.europe": "유럽",
@@ -269,6 +306,8 @@ const ko: TranslationDict = {
   "results.noResultsHint": "필터 또는 검색 조건을 조정하세요.",
   "results.failed": "인스턴스 로드 실패",
   "results.failedHint": "잠시 후 다시 시도하거나 필터를 조정하세요.",
+  "results.showRealCost": "실제 TCO 비용 보기",
+  "results.realCostDesc": "네트워크 송출 및 스토리지 1TB 예상 오버헤드(~23%) 포함.",
 
   "col.provider": "공급사",
   "col.gpu": "GPU",
@@ -345,6 +384,14 @@ const ja: TranslationDict = {
   "search.anyVram": "全VRAM",
   "search.anyRegion": "全リージョン",
   "search.button": "検索",
+  "search.liveInventory": "ライブインベントリ",
+  "search.allCounts": "すべての数",
+  "filter.tier34": "ティア3/4データセンター",
+  "filter.standardDc": "標準データセンター",
+  "filter.community": "コミュニティ / P2P",
+  "filter.noSla": "SLAなし",
+  "filter.uptime9999": "99.99% 稼働率",
+  "filter.uptime999": "99.9% 稼働率",
   "search.stats": "19プロバイダー · 40以上のインスタンス",
   "search.noModels": "モデルが見つかりません。",
 
@@ -359,6 +406,9 @@ const ja: TranslationDict = {
   "filter.sla": "SLA",
   "filter.providers": "プロバイダー",
   "filter.all": "全て",
+  "filter.hyperscalers": "ハイパースケーラー",
+  "filter.specialized": "特化型ベンダー",
+  "filter.decentralized": "分散型 (コミュニティ)",
 
   "region.northAmerica": "北米",
   "region.europe": "ヨーロッパ",

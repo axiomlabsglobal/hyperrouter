@@ -134,7 +134,7 @@ export function SearchBar({ filters, setFilters }: { filters: FilterState, setFi
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
             </span>
-            <span className="text-[9px] text-green-500 font-bold uppercase tracking-widest">Live Inventory</span>
+            <span className="text-[9px] text-green-500 font-bold uppercase tracking-widest">{t('search.liveInventory')}</span>
           </span>
         </div>
 
@@ -149,7 +149,7 @@ export function SearchBar({ filters, setFilters }: { filters: FilterState, setFi
             onChange={(e) => setFilters(prev => ({ ...prev, quantity: e.target.value }))} 
             className={selectClass}
           >
-            <option value="Any">All Counts</option>
+            <option value="Any">{t('search.allCounts')}</option>
             {["1x", "2x", "4x", "8x"].map(q => <option key={q} value={q}>{q}</option>)}
           </select>
           <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" size={12} />

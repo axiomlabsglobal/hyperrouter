@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       console.warn("Missing environment variables. Falling back to dummy mode.");
       return NextResponse.json({ 
         error: "Payment keys missing", 
-        dummyUrl: "/dashboard?checkout=dummy" 
+        dummyUrl: "/dashboard/billing?checkout=dummy" 
       }, { status: 200 });
     }
 
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       console.warn("DB Connection failed during session check. Falling back.");
       return NextResponse.json({ 
         error: "Payment keys missing", 
-        dummyUrl: "/dashboard?checkout=dummy" 
+        dummyUrl: "/dashboard/billing?checkout=dummy" 
       }, { status: 200 });
     }
 
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       userId: session.user.id,
       userEmail: session.user.email!,
       tier: tier,
-      successUrl: `${appUrl}/dashboard?checkout=success`,
+      successUrl: `${appUrl}/dashboard/billing?checkout=success`,
       cancelUrl: `${appUrl}/pricing`,
     });
 

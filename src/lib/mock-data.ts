@@ -80,46 +80,30 @@ const GPU_CHIPS: GpuChipDef[] = [
   { name: "TPU v4", vramPerGpu: 32, configs: [4, 8], basePricePerGpu: 3.22 },
 ];
 
-// ─── GLOBAL REGIONS (40+) ───
+// ─── GLOBAL REGIONS ───
 const REGIONS: RegionDef[] = [
-  // North America (12)
-  { label: "🇺🇸 US-East (N. Virginia)", continent: "North America" },
-  { label: "🇺🇸 US-East (Ohio)", continent: "North America" },
-  { label: "🇺🇸 US-East (New York)", continent: "North America" },
-  { label: "🇺🇸 US-East (New Jersey)", continent: "North America" },
-  { label: "🇺🇸 US-West (Oregon)", continent: "North America" },
-  { label: "🇺🇸 US-West (California)", continent: "North America" },
-  { label: "🇺🇸 US-West (Nevada)", continent: "North America" },
-  { label: "🇺🇸 US-Central (Iowa)", continent: "North America" },
-  { label: "🇺🇸 US-Central (Texas)", continent: "North America" },
-  { label: "🇺🇸 US-Central (Kansas)", continent: "North America" },
-  { label: "🇺🇸 US-South (Georgia)", continent: "North America" },
-  { label: "🇨🇦 Canada (Montréal)", continent: "North America" },
-  // Europe (10)
-  { label: "🇩🇪 EU-Central (Frankfurt)", continent: "Europe" },
-  { label: "🇳🇱 EU-West (Netherlands)", continent: "Europe" },
-  { label: "🇫🇷 EU-West (Paris)", continent: "Europe" },
-  { label: "🇬🇧 EU-West (London)", continent: "Europe" },
-  { label: "🇮🇪 EU-West (Ireland)", continent: "Europe" },
-  { label: "🇸🇪 EU-North (Stockholm)", continent: "Europe" },
-  { label: "🇫🇮 EU-North (Finland)", continent: "Europe" },
-  { label: "🇮🇸 EU-West (Iceland)", continent: "Europe" },
-  { label: "🇷🇴 EU-East (Romania)", continent: "Europe" },
-  { label: "🇵🇱 EU-Central (Warsaw)", continent: "Europe" },
-  // Asia Pacific (8)
-  { label: "🇯🇵 AP-Northeast (Tokyo)", continent: "Asia Pacific" },
-  { label: "🇰🇷 AP-Northeast (Seoul)", continent: "Asia Pacific" },
-  { label: "🇸🇬 AP-Southeast (Singapore)", continent: "Asia Pacific" },
-  { label: "🇮🇳 AP-South (Mumbai)", continent: "Asia Pacific" },
-  { label: "🇦🇺 AP-Southeast (Sydney)", continent: "Asia Pacific" },
-  { label: "🇭🇰 AP-East (Hong Kong)", continent: "Asia Pacific" },
-  { label: "🇹🇼 AP-East (Taiwan)", continent: "Asia Pacific" },
-  { label: "🇮🇩 AP-Southeast (Jakarta)", continent: "Asia Pacific" },
-  // Middle East & South America
-  { label: "🇦🇪 ME-Central (UAE)", continent: "Asia Pacific" },
-  { label: "🇮🇱 ME-West (Israel)", continent: "Asia Pacific" },
-  { label: "🇧🇷 SA-East (São Paulo)", continent: "North America" },
-  // Global (distributed)
+  // North America
+  { label: "🇺🇸 us-east-1 (N. Virginia)", continent: "North America" },
+  { label: "🇺🇸 us-west-2 (Oregon)", continent: "North America" },
+  { label: "🇺🇸 us-central-1 (Iowa)", continent: "North America" },
+  { label: "🇨🇦 ca-central-1 (Montreal)", continent: "North America" },
+  
+  // Europe
+  { label: "🇩🇪 eu-central-1 (Frankfurt)", continent: "Europe" },
+  { label: "🇮🇪 eu-west-1 (Ireland)", continent: "Europe" },
+  { label: "🇬🇧 eu-west-2 (London)", continent: "Europe" },
+  { label: "🇫🇷 eu-west-3 (Paris)", continent: "Europe" },
+  { label: "🇸🇪 eu-north-1 (Stockholm)", continent: "Europe" },
+
+  // Asia Pacific
+  { label: "🇰🇷 ap-northeast-2 (Seoul)", continent: "Asia Pacific" },
+  { label: "🇸🇬 ap-southeast-1 (Singapore)", continent: "Asia Pacific" },
+  { label: "🇯🇵 ap-northeast-1 (Tokyo)", continent: "Asia Pacific" },
+  { label: "🇹🇼 ap-east-1 (Taipei)", continent: "Asia Pacific" },
+  { label: "🇮🇳 ap-south-1 (Mumbai)", continent: "Asia Pacific" },
+  { label: "🇦🇺 ap-southeast-2 (Sydney)", continent: "Asia Pacific" },
+  
+  // Global
   { label: "🌍 Global (Distributed)", continent: "Global" },
 ];
 
@@ -134,7 +118,8 @@ function seededRandom(seed: number): () => number {
 
 // ─── GENERATOR ───
 export function generateGlobalInstances(): GPUInstance[] {
-  const rand = seededRandom(42);
+  // Use a new seed to completely refresh the deterministic data distribution
+  const rand = seededRandom(9999);
   const instances: GPUInstance[] = [];
   let idCounter = 0;
 
@@ -145,10 +130,10 @@ export function generateGlobalInstances(): GPUInstance[] {
     providerCategory: "Specialized GPU Clouds",
     gpuName: "8x H100 SXM 80GB",
     price: 27.92,
-    region: "🇺🇸 US-East (New York)",
+    region: "🇺🇸 us-east-1 (N. Virginia)",
     continent: "North America",
     availability: "On-Demand",
-    vram: "640GB",
+    vram: "80GB",
     recommended: false,
     affiliateLink: "https://cloud.coreweave.com/deploy?gpu=H100_SXM&region=LGA1",
     affiliateTag: "cw",
@@ -165,7 +150,7 @@ export function generateGlobalInstances(): GPUInstance[] {
     providerCategory: "Specialized GPU Clouds",
     gpuName: "1x A100 80GB PCIe",
     price: 1.64,
-    region: "🇪🇺 EU-West (Romania)" as string,
+    region: "🇩🇪 eu-central-1 (Frankfurt)",
     continent: "Europe",
     availability: "On-Demand",
     vram: "80GB",
@@ -180,26 +165,20 @@ export function generateGlobalInstances(): GPUInstance[] {
     alternativeCount: 31,
   });
 
-  // Generate organic instances
-  for (const provider of PROVIDERS) {
-    // Each provider gets a subset of GPUs and regions
-    const providerGpus = GPU_CHIPS.filter(() => rand() > 0.35);
-    const providerRegions = REGIONS.filter(() => rand() > 0.65);
+  // Generate organic instances: Iterate through Regions first to guarantee diversity
+  for (const region of REGIONS) {
+    // Pick ~75% of providers for each region to ensure a robust hybrid mix
+    const regionProviders = PROVIDERS.filter(() => rand() > 0.25);
+    
+    for (const provider of regionProviders) {
+      // Pick ~50% of GPU chips for this provider in this region
+      const providerGpus = GPU_CHIPS.filter(() => rand() > 0.5); 
+      
+      for (const gpu of providerGpus) {
+        const selectedConfigs = gpu.configs.filter(() => rand() > 0.4);
+        if (selectedConfigs.length === 0) selectedConfigs.push(gpu.configs[0]);
 
-    if (providerRegions.length === 0) {
-      providerRegions.push(REGIONS[Math.floor(rand() * REGIONS.length)]);
-    }
-
-    for (const gpu of providerGpus) {
-      // Each GPU config × region combination
-      const selectedConfigs = gpu.configs.filter(() => rand() > 0.4);
-      if (selectedConfigs.length === 0) selectedConfigs.push(gpu.configs[0]);
-
-      for (const count of selectedConfigs) {
-        const regionCount = Math.min(providerRegions.length, Math.ceil(rand() * 3));
-        const selectedRegions = providerRegions.slice(0, regionCount);
-
-        for (const region of selectedRegions) {
+        for (const count of selectedConfigs) {
           // Price variance: ±25% from base, more for decentralized
           const variance = provider.category === "Decentralized / Community"
             ? 0.5 + rand() * 1.0
@@ -211,7 +190,8 @@ export function generateGlobalInstances(): GPUInstance[] {
             ? rand() > 0.3
             : rand() > 0.82;
 
-          const totalVram = gpu.vramPerGpu * count;
+          // VRAM output normalization: show base capacity per GPU (e.g., 10GB, 141GB)
+          const vramStr = `${gpu.vramPerGpu}GB`;
           const gpuName = `${count}x ${gpu.name}`;
 
           instances.push({
@@ -223,7 +203,7 @@ export function generateGlobalInstances(): GPUInstance[] {
             region: region.label,
             continent: region.continent,
             availability: isSpot ? "Spot" : "On-Demand",
-            vram: `${totalVram}GB`,
+            vram: vramStr,
             recommended: rand() > 0.92,
             affiliateLink: provider.baseLinkTemplate.replace('{gpu}', gpu.name.split(' ')[0]).replace('{type}', gpu.name.replace(/ /g, '_')),
             affiliateTag: provider.affiliateTag,

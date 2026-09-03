@@ -65,4 +65,33 @@ export class LemonSqueezyProvider implements IPaymentProvider {
 
     return digest.length === signatureBuffer.length && crypto.timingSafeEqual(digest, signatureBuffer);
   }
+
+  async getCustomerPortalUrl(customerId: string): Promise<string> {
+    const apiKey = process.env.LEMON_SQUEEZY_API_KEY;
+    if (!apiKey) {
+      throw new Error('Lemon Squeezy API key is missing.');
+    }
+
+    try {
+      const response = await fetch(`https://api.lemonsqueezy.com/v1/customers/${customerId}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json',
+          'Authorization': `Bearer ${apiKey}`
+        }
+      });
+
+      if (!response.ok) {
+        console.error('Failed to fetch Lemon Squeezy customer portal url', await response.text());
+        return 'https://app.lemonsqueezy.com/my-orders';
+      }
+
+      const data = await response.json();
+      return data?.data?.attributes?.urls?.customer_portal || 'https://app.lemonsqueezy.com/my-orders';
+    } catch (e) {
+      console.warn('Fallback to default Lemon Squeezy customer orders portal', e);
+      return 'https://app.lemonsqueezy.com/my-orders';
+    }
+  }
 }
